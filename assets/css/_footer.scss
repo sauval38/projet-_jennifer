@@ -1,0 +1,88 @@
+footer {
+    background-color: $background-color_isabeline;
+    padding: 2rem;
+    font-family: $fontpara;
+    box-shadow: 5px -5px 17px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
+
+    .footer-container {
+        @include flexbox(space-between,  flex-start);
+        width: 100%;
+    }
+
+    .footer-logo {
+        margin-top: 35px;
+        img {
+            max-width: 300px; 
+            height: auto;
+            display: block;
+            margin: 0 auto; 
+        }
+    }
+
+    .footer-info {
+        text-align: center;
+
+        nav {
+            
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 1rem 0;
+
+                li {
+                    margin-bottom: 0.5rem;
+
+                    a {
+                        text-decoration: none;
+                        color: $color_black;
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: $color_salmonpink;
+                        }
+                    }
+                }
+            }
+        }
+
+        .social-icons {
+            ul {
+                @include flexbox(center);
+                gap: 1rem;
+                list-style: none;
+                padding: 0;
+                margin: 1rem 0 0 0; 
+                li a {
+                    text-decoration: none;
+                    color: $color_black;
+                    font-size: $fontsize_h2;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $color_salmonpink;
+                    }
+                }
+            }
+        }
+    }
+
+    .map-container {
+
+        max-width: 300px;
+        text-align: center;
+
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+    }
+
+    p {
+        margin-top: 4.5rem;
+        text-align: center;
+        font-size: $fontsize_para;
+        color: $color_black;
+    }
+}

@@ -1,0 +1,25 @@
+RewriteEngine On
+
+# Redirection pour l'accès à 'accueil'
+RewriteRule ^$ index.php?action=accueil [L,QSA]
+
+# Redirection pour l'accès à 'connexion'
+RewriteRule ^login$ index.php?action=login [L,QSA]
+
+# Redirection pour l'accès à 'deconnexion'
+RewriteRule ^logout$ index.php?action=logout [L,QSA]
+
+# Redirection pour l'accès à 'accueil'
+RewriteRule ^home$ index.php?action=home [L,QSA]
+
+# Redirection pour l'accès à 'mot de passe oublié'
+RewriteRule ^forgot-password$ index.php?action=forgot-password [L,QSA]
+
+# Redirection pour l'accès à 'politique de confidentialité'
+RewriteRule ^privacy$ index.php?action=privacy [L,QSA]
+
+# Redirection pour l'accès à 'condition generale de vente'
+RewriteRule ^general-condition$ index.php?action=general-condition [L,QSA]
+
+# Redirection pour l'accès à 'admin'
+RewriteRule ^admin$ index.php?action=admin [L,QSA]

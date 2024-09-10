@@ -1,0 +1,15 @@
+#admin-board {
+    @include flexbox(space-evenly, false, false, wrap);
+    margin-top: 20px;
+    a {
+        flex: 1 1 calc(33.33% - 2rem);
+        margin: 1rem;
+        padding: 1.5rem;
+        border: 1px solid $border_taupe;
+        border-radius: $border_radius;
+        text-align: center;
+        text-decoration: none;
+        background-color: $background-color_isabeline;
+        color: $color_salmonpink;
+    }
+}

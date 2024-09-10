@@ -1,0 +1,18 @@
+@mixin flexbox($jc:false, $ai:false, $fd:false, $fw:false, $fg:false) {
+    display: flex;
+    @if $jc { 
+        justify-content: $jc; 
+    }
+    @if $ai { 
+        align-items: $ai; 
+    }
+    @if $fd { 
+        flex-direction: $fd;
+    }
+    @if $fw { 
+        flex-wrap: $fw; 
+    }
+    @if $fg { 
+        flex-grow: $fg; 
+    }
+}

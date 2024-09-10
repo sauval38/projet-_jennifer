@@ -1,0 +1,42 @@
+#privacy-policy, #general-conditions-sale{
+
+  section {
+      margin: 0 auto 20px;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid $border_taupe;
+      background-color: $background-color_white;
+      border-radius: $border_radius;
+      max-width: 1000px;
+      
+      p {
+        &.titre {
+          strong{
+            font-size: $fontsize_h2;
+          }
+          
+        }
+      }
+    
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+    }
+    
+    strong {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: $fontsize_para;
+    }
+    
+    ul {
+      list-style: disc;
+      margin-left: 20px;
+    
+      li {
+        margin-bottom: 10px;
+        font-size: $fontsize_para;
+      }
+    }
+  }    

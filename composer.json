@@ -7,6 +7,9 @@
             "Controllers\\": "App/controllers/",
             "Models\\": "App/models/",
             "Views\\": "App/views",
+            "AdminControllers\\": "App/controllers/admin",
+            "AdminModels\\": "App/models/admin",
+            "AdminViews\\": "App/views/admin",
             "Lib\\": "lib/"
         }
     },
@@ -16,5 +19,7 @@
             "email": "boubou601@live.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
 }

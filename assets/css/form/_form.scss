@@ -1,0 +1,51 @@
+#form-login-register, #form-forgot-password {
+    @include flexbox(space-evenly,  flex-start);
+    padding: 50px;
+    border-radius: $border_radius; 
+
+    .form {
+        @include flexbox(false, false, column);
+        background-color: $background-color_salmonpink;
+        padding: 30px;
+        border-radius: $border_radius;
+
+        label {
+            font-family: $fontpara;
+            font-size: $fontsize_h3;
+            color: $color_black;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid $border_taupe;
+            background-color: $background-color_minipink;
+            border-radius: $border_radius_input;
+            font-size: $fontsize_para;
+            color: $color_black;
+        }
+
+        .forgot-password {
+            font-family: $fontpara;
+            font-size: $fontsize_h3;
+            color: $color_black;
+            margin-top: -10px;
+            text-align: center; 
+            text-decoration: none; 
+            &:hover {
+                text-decoration: underline; 
+                color: $color_white;
+            }
+        }
+
+        p {
+            font-family: $fontpara;
+            font-size: $fontsize_para;
+            color: $color_black;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+    }
+}
