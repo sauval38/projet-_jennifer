@@ -12,6 +12,9 @@ RewriteRule ^logout$ index.php?action=logout [L,QSA]
 # Redirection pour l'accès à 'accueil'
 RewriteRule ^home$ index.php?action=home [L,QSA]
 
+# Redirection pour l'accès à 'gammes'
+RewriteRule ^gammes$ index.php?action=gammes [L,QSA]
+
 # Redirection pour l'accès à 'mot de passe oublié'
 RewriteRule ^forgot-password$ index.php?action=forgot-password [L,QSA]
 

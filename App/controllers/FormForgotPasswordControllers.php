@@ -44,8 +44,8 @@ class FormForgotPasswordControllers {
             $mail->isSMTP();
             $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Le serveur SMTP de Mailtrap
             $mail->SMTPAuth   = true;                // Activer l'authentification SMTP
-            $mail->Username   = '5c53e815d0a8dd';    // Nom d'utilisateur Mailtrap
-            $mail->Password   = 'b1c95af9290d38';      // Mot de passe Mailtrap
+            $mail->Username   = 'dffb3dbaf6ac0c';    // Nom d'utilisateur Mailtrap
+            $mail->Password   = 'bf1735b7df1071';      // Mot de passe Mailtrap
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Activer le chiffrement TLS
             $mail->Port       = 2525;                // Port utilisé par Mailtrap
 
@@ -56,8 +56,8 @@ class FormForgotPasswordControllers {
             // Contenu de l'email
             $mail->isHTML(true);                                  // Activer le format HTML
             $mail->Subject = 'Réinitialisation de votre mot de passe';
-            $mail->Body    = "Cliquez sur ce lien pour modifier votre mot de passe : <a href='http://localhost/code%20jennifer%20site/?action=password&token=$token'>Réinitialiser de votre mot de passe</a>";
-            $mail->AltBody = "Cliquez sur ce lien pour Réinitialiser de votre mot de passe : http://localhost/code%20jennifer%20site/?action=password&token=$token"; // Version texte
+            $mail->Body    = "Cliquez sur ce lien pour modifier votre mot de passe : <a href='http://localhost/Projet-stage/projet-_jennifer/?action=password&token=$token'>Réinitialiser de votre mot de passe</a>";
+            $mail->AltBody = "Cliquez sur ce lien pour Réinitialiser de votre mot de passe : http://localhost/Projet-stage/projet-_jennifer/?action=password&token=$token"; // Version texte
 
             // Envoyer l'email
             $mail->send();

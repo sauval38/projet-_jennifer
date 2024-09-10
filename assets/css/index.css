@@ -277,7 +277,7 @@ footer p {
   margin-top: 20px;
 }
 #admin-board a {
-  flex: 1 1 calc(33.33% - 2rem);
+  width: 30%;
   margin: 1rem;
   padding: 1.5rem;
   border: 1px solid rgb(81, 68, 64);
@@ -286,4 +286,31 @@ footer p {
   text-decoration: none;
   background-color: rgb(253, 247, 242);
   color: rgb(237, 142, 156);
+}
+
+.gammes-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.gammes-container a {
+  width: 30%;
+  margin: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  border: 1px solid rgb(81, 68, 64);
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(253, 247, 242);
+  color: rgb(237, 142, 156);
+  text-transform: uppercase;
+}
+.gammes-container a .description {
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  margin: 0;
+  font-style: italic;
+  line-height: 1;
 }/*# sourceMappingURL=index.css.map */

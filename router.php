@@ -10,6 +10,7 @@ use Controllers\HomeControllers;
 use Controllers\LoginFormControllers;
 use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
+use Controllers\GammesControllers;
 use AdminControllers\AdminDashboardControllers;
 
 $pdo = new Database;
@@ -20,6 +21,11 @@ $formType = $_POST['form_type'] ?? '';
 switch ($action) {
     default:
         echo "hello";
+        break;
+    
+    case 'gammes':
+        $gammesControllers = new GammesControllers();
+        $gammesControllers->showGammes();
         break;
 
     case 'login':
@@ -58,10 +64,10 @@ switch ($action) {
         }
         break;
 
-        case 'home':
-            $homeControllers = new HomeControllers();
-            $homeControllers->home();
-            break;    
+    case 'home':
+        $homeControllers = new HomeControllers();
+        $homeControllers->home();
+        break;    
 
     case 'logout':
         $loginFormControllers = new LoginFormControllers();
