@@ -26,3 +26,15 @@ RewriteRule ^general-condition$ index.php?action=general-condition [L,QSA]
 
 # Redirection pour l'accès à 'admin'
 RewriteRule ^admin$ index.php?action=admin [L,QSA]
+
+# Redirection pour l'accès à 'admin/gammes'
+RewriteRule ^admin/gammes$ index.php?action=admin&step=gammes
+
+# Redirection pour l'accès à 'admin/gammes/create'
+RewriteRule ^admin/gammes/create$ index.php?action=admin&step=gammes&crud=create [L,QSA]
+
+# Redirection pour l'accès à 'admin/gammes/edit'
+RewriteRule ^admin/gammes/edit/([0-9]+)$ index.php?action=admin&step=gammes&crud=edit&id=$1 [L,QSA]
+
+# Redirection pour l'accès à 'admin/gammes/delete'
+RewriteRule ^admin/gammes/delete/([0-9]+)$ index.php?action=admin&step=gammes&crud=delete&id=$1 [L,QSA]

@@ -12,10 +12,14 @@ use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use AdminControllers\AdminDashboardControllers;
+use AdminControllers\AdminGammesControllers;
 
 $pdo = new Database;
 
+$step = $_REQUEST['step'] ?? null;
 $action = $_REQUEST['action'] ?? null;
+$crud = $_REQUEST['crud'] ?? null;
+$id = $_REQUEST['id'] ?? null;
 $formType = $_POST['form_type'] ?? '';
 
 switch ($action) {
@@ -85,7 +89,48 @@ switch ($action) {
         
     case 'admin':
         $adminDashboardControllers = new AdminDashboardControllers();
-        $adminDashboardControllers->showAdminBoard();
+        if (!$step){
+            $adminDashboardControllers->showAdminBoard();
+        } else {
+            switch ($step) {
+            case 'gammes':
+                $adminGammesController = new AdminGammesControllers();
+                $gammesControllers = new GammesControllers();
+
+                switch ($crud) {
+                    case 'create':
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                            $adminGammesController->handleFormSubmission();
+                        } else {
+                            $adminGammesController->showForm();
+                        }
+                        break;
+                    
+                    case 'edit':
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                            $adminGammesController->handleFormSubmission();
+                        } else {
+                            $adminGammesController->showForm($id);
+                        }
+                        break;
+
+                    case 'delete':
+                        if ($id) {
+                            $adminGammesController->deleteGamme($id);
+                        } else {
+                            echo "ID manquant pour la suppression.";
+                        }
+                        break;
+
+                    default:
+                        $gammesControllers->showAdminGammes();
+                        break;
+                }
+                break;
+        }
+        }
+        
+        
         break;
         
     case 'privacy':
