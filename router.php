@@ -19,7 +19,8 @@ $formType = $_POST['form_type'] ?? '';
 
 switch ($action) {
     default:
-        echo "hello";
+        $homeControllers = new HomeControllers();
+        $homeControllers->home();
         break;
 
     case 'login':
@@ -56,12 +57,7 @@ switch ($action) {
                 echo "<h1>Token manquant</h1>";
             }
         }
-        break;
-
-        case 'home':
-            $homeControllers = new HomeControllers();
-            $homeControllers->home();
-            break;    
+        break;   
 
     case 'logout':
         $loginFormControllers = new LoginFormControllers();
