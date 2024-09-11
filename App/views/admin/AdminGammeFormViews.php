@@ -17,6 +17,7 @@ class AdminGammeFormViews {
                 <br>
                 <label for="image_path">Image:</label>
                 <input type="file" id="image_path" name="image_path">
+                <input type="hidden" name="current_image" value="<?php echo htmlspecialchars($gamme['image_path']); ?>">
                 <br>
                 <?php if ($gamme['image_path']) : ?>
                     <img src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" style="max-width: 100px;">
