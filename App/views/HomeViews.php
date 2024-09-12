@@ -46,6 +46,9 @@ class HomeViews {
                     <img src="./assets/images/accueil_4.jpg" alt="accueil">
                     <a href="url-de-la-page.html" class="button-link right">MES GAMMES</a>
                 </div>
+                <div class="text-block">
+                    <h3>Une passion, une histoire</h3>
+                </div>
             </div>
         </div>
 
