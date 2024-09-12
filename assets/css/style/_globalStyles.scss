@@ -33,10 +33,14 @@ h3 {
 h4 {
     font-family: $fonttitle;
     font-size: $fontsize_h4;
+    color: $color_salmonpink;
     margin-bottom: 0.5rem;
+    text-align: center;
+    font-style: italic;
 }
 
 p {
+    color: $color_black;
     margin: 0 0 15px;
     font-size: $fontsize_para;
     line-height: 1.2;

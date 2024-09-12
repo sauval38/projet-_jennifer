@@ -1,25 +1,72 @@
 .gammes-container {
     @include flexbox(space-evenly, false, false, wrap);
     margin-top: 20px;
+    padding: 20px;
+    min-height: 300px;
+    position: relative;
+
     a {
-        width: 30%;
+        width: 22%;
         margin: 1rem;
-        padding: 1.5rem;
-        font-size: 1.5rem;
+        padding: 1rem;
+        font-size: 1.2rem;
         border: 1px solid $border_taupe;
-        border-radius: $border_radius;
+        border-radius: 8px;
         text-align: center;
         text-decoration: none;
-        background-color: $background-color_isabeline;
+        background-color: rgba($background-color_isabeline, 0.8);
         color: $color_salmonpink;
         text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, box-shadow 0.3s;
 
-        .description {
-            font-size: 0.8rem;
-            text-transform: lowercase;
-            margin: 0;
-            font-style: italic;
-            line-height: 1;
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        .gamme-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            figure {
+                position: relative;
+                width: 100%;
+                margin: 0;
+
+                img {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
+                    object-position: 40% 50%;
+                }
+
+                figcaption {
+                    position: absolute;
+                    top: 50%; // Positionne verticalement au centre
+                    left: 50%; // Positionne horizontalement au centre
+                    transform: translate(-50%, -50%); // Centrage exact
+                    width: 100%;
+                    background: rgba(0, 0, 0, 0.5); // Fond semi-transparent pour améliorer la lisibilité
+                    color: #fff; // Couleur du texte
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+
+            p.description {
+                margin-top: 10px; // Espace entre l'image et la description
+                padding: 0 10px; // Padding horizontal pour le texte
+                text-align: center; // Aligne le texte au centre
+                font-style: italic;
+            }
         }
     }
 }

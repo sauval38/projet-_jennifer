@@ -37,7 +37,7 @@ class HomeViews {
             <div class="content-wrapper">
                 <section class="section-container">
                     <div class="text-block">
-                        <h3>Une passion, une histoire</h3>
+                        <h4>Une passion, une histoire</h4>
                     </div>
                     <div class="image-container">
                         <img src="./assets/images/accueil_3.jpg" alt="accueil">
@@ -50,13 +50,12 @@ class HomeViews {
                         <a href="url-de-la-page.html" class="button-link right">MES GAMMES</a>
                     </div>
                     <div class="text-block">
-                        <h3>Une passion, une histoire</h3>
+                        <h4>Une idée, une création</h4>
                     </div>
                 </section>
                 
             </div>
         </div>
-
         <script src="./assets/js/home.js"></script>
     <?php
     }

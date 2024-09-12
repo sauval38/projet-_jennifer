@@ -9,8 +9,15 @@ class GammesViews {
             <?php if (!empty($gammes)) : ?>
                 <?php foreach ($gammes as $gamme) : ?>
                     <a href="<?php echo htmlspecialchars($gamme['name']); ?>">
-                        <?php echo htmlspecialchars($gamme['name']); ?>
-                        <p class="description" ><?php echo htmlspecialchars($gamme['description']); ?></p>
+                        <div class="gamme-item">
+                            <figure>
+                                <img src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" />
+                                <figcaption>
+                                    <h4><?php echo htmlspecialchars($gamme['name']); ?></h4>
+                                </figcaption>
+                            </figure>
+                            <p class="description"><?php echo htmlspecialchars($gamme['description']); ?></p>
+                        </div>
                     </a>
                 <?php endforeach; ?>
             <?php else : ?>
@@ -20,8 +27,3 @@ class GammesViews {
         <?php
     }
 }
-
-
-/* ajouter pour les images
-<img src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" /> 
-*/

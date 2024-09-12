@@ -16,7 +16,6 @@
         margin: 30px 0;
         height: auto; 
         text-align: center; 
-        box-sizing: border-box; 
 
         img {
             width: 100px; 
@@ -67,8 +66,10 @@
 
     .content-wrapper {
         display: flex;
-        align-items: stretch; /* Ensures that text-block and image containers are the same height */
-        gap: 50px; /* Space between image containers */
+        align-items: stretch; 
+        height: 300px;
+        gap: 70px; 
+        background-color: $background-color_isabeline;
         
         .section-container {
             display: flex;
@@ -97,7 +98,6 @@
                     width: 400px;
                     height: 300px;
                     object-fit: cover;
-                    margin-bottom: 10px;
                 }
     
                 .button-link {

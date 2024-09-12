@@ -46,11 +46,15 @@ h3 {
 
 h4 {
   font-family: "Cinzel", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
+  color: rgb(237, 142, 156);
   margin-bottom: 0.5rem;
+  text-align: center;
+  font-style: italic;
 }
 
 p {
+  color: rgb(0, 0, 0);
   margin: 0 0 15px;
   font-size: 16px;
   line-height: 1.2;
@@ -223,7 +227,6 @@ footer p {
   margin: 30px 0;
   height: auto;
   text-align: center;
-  box-sizing: border-box;
 }
 .carousel-container .carousel-side img {
   width: 100px;
@@ -268,8 +271,10 @@ footer p {
 }
 #contenu .content-wrapper {
   display: flex;
-  align-items: stretch; /* Ensures that text-block and image containers are the same height */
-  gap: 50px; /* Space between image containers */
+  align-items: stretch;
+  height: 300px;
+  gap: 70px;
+  background-color: rgb(253, 247, 242);
 }
 #contenu .content-wrapper .section-container {
   display: flex;
@@ -298,7 +303,6 @@ footer p {
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-bottom: 10px;
 }
 #contenu .content-wrapper .section-container .image-container .button-link {
   position: absolute;
@@ -419,26 +423,69 @@ footer p {
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 20px;
+  padding: 20px;
+  min-height: 300px;
+  position: relative;
 }
 .gammes-container a {
-  width: 30%;
+  width: 22%;
   margin: 1rem;
-  padding: 1.5rem;
-  font-size: 1.5rem;
+  padding: 1rem;
+  font-size: 1.2rem;
   border: 1px solid rgb(81, 68, 64);
-  border-radius: 16px;
+  border-radius: 8px;
   text-align: center;
   text-decoration: none;
-  background-color: rgb(253, 247, 242);
+  background-color: rgba(253, 247, 242, 0.8);
   color: rgb(237, 142, 156);
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.gammes-container a .description {
-  font-size: 0.8rem;
-  text-transform: lowercase;
+.gammes-container a:hover {
+  transform: translateY(-5px);
+}
+.gammes-container a .gamme-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.gammes-container a .gamme-item figure {
+  position: relative;
+  width: 100%;
   margin: 0;
+}
+.gammes-container a .gamme-item figure img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 40% 50%;
+     object-position: 40% 50%;
+}
+.gammes-container a .gamme-item figure figcaption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+.gammes-container a .gamme-item p.description {
+  margin-top: 10px;
+  padding: 0 10px;
+  text-align: center;
   font-style: italic;
-  line-height: 1;
 }
 
 .admin-gammes-container {
