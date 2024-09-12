@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 12 sep. 2024 à 13:01
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Sep 12, 2024 at 01:42 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,27 +18,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `maison_hemera`
+-- Database: `maison_hemera`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `about_me`
+-- Table structure for table `about_me`
 --
 
 CREATE TABLE `about_me` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `bio` text DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `bio` text,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -48,39 +48,39 @@ CREATE TABLE `address` (
   `delivery_address` varchar(255) NOT NULL,
   `city` varchar(100) NOT NULL,
   `postal_code` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `archived_order`
+-- Table structure for table `archived_order`
 --
 
 CREATE TABLE `archived_order` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `order_date` datetime NOT NULL,
-  `archive_date` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `archive_date` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `total_amount` decimal(10,2) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cart_detail`
+-- Table structure for table `cart_detail`
 --
 
 CREATE TABLE `cart_detail` (
@@ -90,23 +90,23 @@ CREATE TABLE `cart_detail` (
   `product_option_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `colors`
+-- Table structure for table `colors`
 --
 
 CREATE TABLE `colors` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `delivery`
+-- Table structure for table `delivery`
 --
 
 CREATE TABLE `delivery` (
@@ -117,25 +117,25 @@ CREATE TABLE `delivery` (
   `tracking_number` varchar(255) DEFAULT NULL,
   `shipped_at` datetime DEFAULT NULL,
   `delivered_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `delivery_option`
+-- Table structure for table `delivery_option`
 --
 
 CREATE TABLE `delivery_option` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -143,14 +143,14 @@ CREATE TABLE `order` (
   `user_id` int(11) DEFAULT NULL,
   `payment_method_id` int(11) DEFAULT NULL,
   `total_amount` decimal(10,2) NOT NULL,
-  `order_date` datetime DEFAULT current_timestamp(),
+  `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_detail`
+-- Table structure for table `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -160,72 +160,72 @@ CREATE TABLE `order_detail` (
   `product_option_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `payment_methods`
+-- Table structure for table `payment_methods`
 --
 
 CREATE TABLE `payment_methods` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `method_name` varchar(255) NOT NULL,
-  `method_details` text DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `method_details` text,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_range_id` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `price` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `height` decimal(10,2) NOT NULL,
   `weight` decimal(10,2) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `products_range`
+-- Table structure for table `products_range`
 --
 
 CREATE TABLE `products_range` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `image_path` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `products_range`
+-- Dumping data for table `products_range`
 --
 
 INSERT INTO `products_range` (`id`, `name`, `description`, `image_path`) VALUES
-(1, 'gamme nomage', 'Description pour la gamme Nomage', 'assets/images/gammes/hugo.jpg'),
-(2, 'gamme enigma', 'Description pour la gamme Enigma', NULL),
-(3, 'gamme erecta', 'Description pour la gamme Erecta', NULL),
-(4, 'gamme femina', 'Description pour la gamme Femina', NULL),
-(5, 'gamme dream', 'Description pour la gamme Dream', NULL),
-(6, 'gamme nomade', 'Description pour la gamme Nomade', NULL),
-(7, 'gamme tendre', 'Description pour la gamme Tendre', NULL);
+(9, 'Gamme Boudoir', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/_GMA3182-min.jpg'),
+(10, 'Gamme Dream', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/DSC02766-Enhanced-NR.jpg'),
+(11, 'Gamme Enigma', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/IMG20221025181912.jpg'),
+(12, 'Gamme Érécta ', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/DSC02933.jpg'),
+(13, 'Gamme Fémina', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/DSC02928-2.jpg'),
+(14, 'Gamme nomade', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/DSC02806.jpg'),
+(15, 'Gamme Tendre', 'Découvre l’univers sensuel et féminin de la Collection Boudoir de Maison Héméra', 'assets/images/gammes/DSC02981.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_option`
+-- Table structure for table `product_option`
 --
 
 CREATE TABLE `product_option` (
@@ -233,21 +233,21 @@ CREATE TABLE `product_option` (
   `product_id` int(11) DEFAULT NULL,
   `option_name` varchar(255) NOT NULL,
   `option_value` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -257,7 +257,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `social_network`
+-- Table structure for table `social_network`
 --
 
 CREATE TABLE `social_network` (
@@ -265,31 +265,31 @@ CREATE TABLE `social_network` (
   `network_name` varchar(255) NOT NULL,
   `network_url` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL DEFAULT 1,
+  `role_id` int(11) NOT NULL DEFAULT '1',
   `username` varchar(255) NOT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
-  `is_verified` tinyint(4) NOT NULL DEFAULT 0,
-  `token` text DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `is_verified` tinyint(4) NOT NULL DEFAULT '0',
+  `token` text,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `role_id`, `username`, `lastname`, `firstname`, `email`, `password`, `phone_number`, `is_verified`, `token`, `created_at`, `updated_at`) VALUES
@@ -302,7 +302,7 @@ INSERT INTO `users` (`id`, `role_id`, `username`, `lastname`, `firstname`, `emai
 -- --------------------------------------------------------
 
 --
--- Structure de la table `wish_list`
+-- Table structure for table `wish_list`
 --
 
 CREATE TABLE `wish_list` (
@@ -310,42 +310,42 @@ CREATE TABLE `wish_list` (
   `user_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `product_option_id` int(11) DEFAULT NULL,
-  `added_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `added_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `about_me`
+-- Indexes for table `about_me`
 --
 ALTER TABLE `about_me`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_address` (`user_id`);
 
 --
--- Index pour la table `archived_order`
+-- Indexes for table `archived_order`
 --
 ALTER TABLE `archived_order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_order_archived` (`order_id`);
 
 --
--- Index pour la table `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_cart` (`user_id`);
 
 --
--- Index pour la table `cart_detail`
+-- Indexes for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD PRIMARY KEY (`id`),
@@ -354,13 +354,13 @@ ALTER TABLE `cart_detail`
   ADD KEY `fk_product_option_cart_detail` (`product_option_id`);
 
 --
--- Index pour la table `colors`
+-- Indexes for table `colors`
 --
 ALTER TABLE `colors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `delivery`
+-- Indexes for table `delivery`
 --
 ALTER TABLE `delivery`
   ADD PRIMARY KEY (`id`),
@@ -368,13 +368,13 @@ ALTER TABLE `delivery`
   ADD KEY `fk_delivery_option` (`delivery_option_id`);
 
 --
--- Index pour la table `delivery_option`
+-- Indexes for table `delivery_option`
 --
 ALTER TABLE `delivery_option`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
@@ -382,7 +382,7 @@ ALTER TABLE `order`
   ADD KEY `fk_payment_order` (`payment_method_id`);
 
 --
--- Index pour la table `order_detail`
+-- Indexes for table `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
@@ -391,46 +391,46 @@ ALTER TABLE `order_detail`
   ADD KEY `fk_product_option_order_detail` (`product_option_id`);
 
 --
--- Index pour la table `payment_methods`
+-- Indexes for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_payment` (`user_id`);
 
 --
--- Index pour la table `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_product_range` (`product_range_id`);
 
 --
--- Index pour la table `products_range`
+-- Indexes for table `products_range`
 --
 ALTER TABLE `products_range`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `product_option`
+-- Indexes for table `product_option`
 --
 ALTER TABLE `product_option`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_product_option` (`product_id`);
 
 --
--- Index pour la table `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `social_network`
+-- Indexes for table `social_network`
 --
 ALTER TABLE `social_network`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -439,7 +439,7 @@ ALTER TABLE `users`
   ADD KEY `fk_role_user` (`role_id`);
 
 --
--- Index pour la table `wish_list`
+-- Indexes for table `wish_list`
 --
 ALTER TABLE `wish_list`
   ADD PRIMARY KEY (`id`),
@@ -448,141 +448,141 @@ ALTER TABLE `wish_list`
   ADD KEY `fk_product_option_wishlist` (`product_option_id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `about_me`
+-- AUTO_INCREMENT for table `about_me`
 --
 ALTER TABLE `about_me`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `address`
+-- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `archived_order`
+-- AUTO_INCREMENT for table `archived_order`
 --
 ALTER TABLE `archived_order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `cart_detail`
+-- AUTO_INCREMENT for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `colors`
+-- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `delivery`
+-- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `delivery_option`
+-- AUTO_INCREMENT for table `delivery_option`
 --
 ALTER TABLE `delivery_option`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `order_detail`
+-- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `payment_methods`
+-- AUTO_INCREMENT for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `products_range`
+-- AUTO_INCREMENT for table `products_range`
 --
 ALTER TABLE `products_range`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT pour la table `product_option`
+-- AUTO_INCREMENT for table `product_option`
 --
 ALTER TABLE `product_option`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `social_network`
+-- AUTO_INCREMENT for table `social_network`
 --
 ALTER TABLE `social_network`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT pour la table `wish_list`
+-- AUTO_INCREMENT for table `wish_list`
 --
 ALTER TABLE `wish_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `address`
+-- Constraints for table `address`
 --
 ALTER TABLE `address`
   ADD CONSTRAINT `fk_user_address` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `archived_order`
+-- Constraints for table `archived_order`
 --
 ALTER TABLE `archived_order`
   ADD CONSTRAINT `fk_order_archived` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --
--- Contraintes pour la table `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `fk_user_cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `cart_detail`
+-- Constraints for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD CONSTRAINT `fk_cart_cart_detail` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
@@ -590,21 +590,21 @@ ALTER TABLE `cart_detail`
   ADD CONSTRAINT `fk_product_option_cart_detail` FOREIGN KEY (`product_option_id`) REFERENCES `product_option` (`id`);
 
 --
--- Contraintes pour la table `delivery`
+-- Constraints for table `delivery`
 --
 ALTER TABLE `delivery`
   ADD CONSTRAINT `fk_delivery_option` FOREIGN KEY (`delivery_option_id`) REFERENCES `delivery_option` (`id`),
   ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --
--- Contraintes pour la table `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `fk_payment_order` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods` (`id`),
   ADD CONSTRAINT `fk_user_order` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `order_detail`
+-- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `fk_order_order_detail` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
@@ -612,31 +612,31 @@ ALTER TABLE `order_detail`
   ADD CONSTRAINT `fk_product_order_detail` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Contraintes pour la table `payment_methods`
+-- Constraints for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
   ADD CONSTRAINT `fk_user_payment` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Contraintes pour la table `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_product_range` FOREIGN KEY (`product_range_id`) REFERENCES `products_range` (`id`);
 
 --
--- Contraintes pour la table `product_option`
+-- Constraints for table `product_option`
 --
 ALTER TABLE `product_option`
   ADD CONSTRAINT `fk_product_option` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_role_user` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
--- Contraintes pour la table `wish_list`
+-- Constraints for table `wish_list`
 --
 ALTER TABLE `wish_list`
   ADD CONSTRAINT `fk_product_option_wishlist` FOREIGN KEY (`product_option_id`) REFERENCES `product_option` (`id`),
