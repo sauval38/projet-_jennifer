@@ -3,7 +3,7 @@ h1 {
     color: $color_salmonpink;
     font-size: $fontsize_h1;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 h2 {
@@ -20,13 +20,14 @@ h3 {
     margin-left: auto; 
     margin-right: auto;
     padding: 1rem;
-    border: 1px solid $border_isabeline;
+    border: 1px solid $border_taupe;
     border-radius: $border_radius;
     background-color: $background-color_isabeline;
     color: $color_salmonpink;
     margin-top: 30px;
     font-size: $fontsize_h3;
     text-align: center;
+    margin: 10px 0;
 }
 
 h4 {

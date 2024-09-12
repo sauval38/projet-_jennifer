@@ -5,7 +5,8 @@ namespace Views;
 class LoginFormViews {
     public function formloginViews() {
             ?>
-             <div id="form-login-register">
+            <h1 class="par-ici">Ici l'inscription et la connexion</h1>
+            <div id="form-login-register">
             <form class="form" method="POST" action="login">
                 <h2>Se connecter</h2> 
                 <input type="hidden" name="form_type" value="login">
