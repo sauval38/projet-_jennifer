@@ -69,47 +69,52 @@
         display: flex;
         align-items: stretch; /* Ensures that text-block and image containers are the same height */
         gap: 50px; /* Space between image containers */
-
-        .text-block {
-            max-width: 300px;
-            padding: 20px;
-            background-color: $background-color_isabeline;
-            text-align: left;
+        
+        .section-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            box-sizing: border-box;
-        }
+            flex-direction: row;
 
-        .image-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 500px;
-            position: relative;
-
-            img {
-                width: 100%;
+            .text-block {
+                max-width: 200px;
                 height: 300px;
-                object-fit: cover;
-                margin-bottom: 10px;
-            }
-
-            .button-link {
-                position: absolute;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
+                padding: 20px;
                 background-color: $background-color_isabeline;
-                color: $color_black;
-                padding: 10px 20px;
-                font-size: 16px;
-                text-decoration: none;
-                border-radius: $border_radius_input;
-                cursor: pointer;
-                text-align: center;
-                border: none;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+    
+            .image-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 500px;
+                position: relative;
+    
+                img {
+                    width: 400px;
+                    height: 300px;
+                    object-fit: cover;
+                    margin-bottom: 10px;
+                }
+    
+                .button-link {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: $background-color_isabeline;
+                    color: $color_black;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: $border_radius_input;
+                    cursor: pointer;
+                    text-align: center;
+                    border: none;
+                }
             }
         }
     }
