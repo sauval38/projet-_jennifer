@@ -24,7 +24,8 @@ $formType = $_POST['form_type'] ?? '';
 
 switch ($action) {
     default:
-        echo "hello";
+        $homeControllers = new HomeControllers();
+        $homeControllers->home();
         break;
     
     case 'gammes':
@@ -67,11 +68,6 @@ switch ($action) {
             }
         }
         break;
-
-    case 'home':
-        $homeControllers = new HomeControllers();
-        $homeControllers->home();
-        break;    
 
     case 'logout':
         $loginFormControllers = new LoginFormControllers();
