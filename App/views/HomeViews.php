@@ -34,17 +34,21 @@ class HomeViews {
 
         <div id="contenu">
             <h3>Diplômée en 2014, je me suis lancée dans l'aventure de la céramique et j'ai créé Maison Héméra.</h3>
-            <div>
+            <div class="content-wrapper">
+                <div class="text-block">
+                    <h3>Une passion, une histoire</h3>
+                </div>
                 <div class="image-container">
                     <img src="./assets/images/accueil_3.jpg" alt="accueil">
                     <a href="url-de-la-page.html" class="button-link left">PRÉSENTATION</a>
                 </div>
                 <div class="image-container">
-                    <img src="./assets/images/accueil_3.jpg" alt="accueil">
+                    <img src="./assets/images/accueil_4.jpg" alt="accueil">
                     <a href="url-de-la-page.html" class="button-link right">MES GAMMES</a>
                 </div>
             </div>
-        </div> 
+        </div>
+
         <script src="./assets/js/home.js"></script>
     <?php
     }
