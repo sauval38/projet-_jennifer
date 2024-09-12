@@ -1,15 +1,25 @@
-#admin-board {
+.gammes-container {
     @include flexbox(space-evenly, false, false, wrap);
     margin-top: 20px;
     a {
         width: 30%;
         margin: 1rem;
         padding: 1.5rem;
+        font-size: 1.5rem;
         border: 1px solid $border_taupe;
         border-radius: $border_radius;
         text-align: center;
         text-decoration: none;
         background-color: $background-color_isabeline;
         color: $color_salmonpink;
+        text-transform: uppercase;
+
+        .description {
+            font-size: 0.8rem;
+            text-transform: lowercase;
+            margin: 0;
+            font-style: italic;
+            line-height: 1;
+        }
     }
 }

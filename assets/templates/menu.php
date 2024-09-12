@@ -14,7 +14,7 @@
             <?php else: ?>
                 <!-- Regular Navigation -->
                 <a href="">Accueil</a>
-                <a href="">Gamme</a>
+                <a href="gammes">Gamme</a>
                 <a href="">A propos de moi</a>
             <?php endif; ?>
         </div>

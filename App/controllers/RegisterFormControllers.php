@@ -45,8 +45,8 @@ class RegisterFormControllers {
             $mail->isSMTP();
             $mail->Host       = 'sandbox.smtp.mailtrap.io';  // Le serveur SMTP de Mailtrap
             $mail->SMTPAuth   = true;                // Activer l'authentification SMTP
-            $mail->Username   = '5c53e815d0a8dd';    // Nom d'utilisateur Mailtrap
-            $mail->Password   = 'b1c95af9290d38';      // Mot de passe Mailtrap
+            $mail->Username   = 'dffb3dbaf6ac0c';    // Nom d'utilisateur Mailtrap
+            $mail->Password   = 'bf1735b7df1071';      // Mot de passe Mailtrap
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Activer le chiffrement TLS
             $mail->Port       = 2525;                // Port utilisé par Mailtrap
 
@@ -57,8 +57,8 @@ class RegisterFormControllers {
             // Contenu de l'email
             $mail->isHTML(true);                                  // Activer le format HTML
             $mail->Subject = 'Confirmez votre email';
-            $mail->Body    = "Cliquez sur ce lien pour vérifier votre email : <a href='http://localhost/code%20jennifer%20site/?action=verify&token=$token'>Confirmer votre email</a>";
-            $mail->AltBody = "Cliquez sur ce lien pour vérifier votre email : http://localhost/code%20jennifer%20site/?action=verify&token=$token"; // Version texte
+            $mail->Body    = "Cliquez sur ce lien pour vérifier votre email : <a href='http://localhost/projet-_jennifer/?action=verify&token=$token'>Confirmer votre email</a>";
+            $mail->AltBody = "Cliquez sur ce lien pour vérifier votre email : http://localhost/projet-_jennifer/?action=verify&token=$token"; // Version texte
 
             // Envoyer l'email
             $mail->send();

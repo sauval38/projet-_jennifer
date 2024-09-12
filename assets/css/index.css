@@ -75,6 +75,20 @@ button:hover {
   border: 1px solid rgb(81, 68, 64);
 }
 
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
 #menu {
   background-color: rgb(253, 247, 242);
   box-shadow: 0 5px 17px rgba(0, 0, 0, 0.1);
@@ -385,7 +399,7 @@ footer p {
   margin-top: 20px;
 }
 #admin-board a {
-  flex: 1 1 calc(33.33% - 2rem);
+  width: 30%;
   margin: 1rem;
   padding: 1.5rem;
   border: 1px solid rgb(81, 68, 64);
@@ -394,4 +408,76 @@ footer p {
   text-decoration: none;
   background-color: rgb(253, 247, 242);
   color: rgb(237, 142, 156);
+}
+
+.gammes-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.gammes-container a {
+  width: 30%;
+  margin: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  border: 1px solid rgb(81, 68, 64);
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(253, 247, 242);
+  color: rgb(237, 142, 156);
+  text-transform: uppercase;
+}
+.gammes-container a .description {
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  margin: 0;
+  font-style: italic;
+  line-height: 1;
+}
+
+.admin-gammes-container {
+  padding: 20px;
+}
+.admin-gammes-container h1 {
+  margin-bottom: 20px;
+}
+.admin-gammes-container .btn {
+  display: inline-block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.admin-gammes-container .btn.btn-primary {
+  background-color: #000000;
+}
+.admin-gammes-container .btn.btn-secondary {
+  background-color: #000000;
+}
+.admin-gammes-container .btn.btn-danger {
+  background-color: red;
+}
+.admin-gammes-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.admin-gammes-container table th, .admin-gammes-container table td {
+  border: 1px solid #000000;
+  padding: 10px;
+  text-align: center;
+}
+.admin-gammes-container table th {
+  background-color: #f8f9fa;
+}
+.admin-gammes-container table td img {
+  max-width: 100px;
+  height: auto;
+}
+.admin-gammes-container tr.no-data td {
+  text-align: center;
+  color: #888;
 }/*# sourceMappingURL=index.css.map */

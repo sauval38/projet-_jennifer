@@ -1,0 +1,75 @@
+// Variables
+$primary-color: #000000;
+$secondary-color: #000000;
+$border-color: #000000;
+$padding: 10px;
+$border-radius: 5px;
+
+// Container
+.admin-gammes-container {
+  padding: 20px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  // Buttons
+  .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: $border-radius;
+    margin-right: 10px;
+
+    &.btn-primary {
+      background-color: $primary-color;
+    }
+
+    &.btn-secondary {
+      background-color: $secondary-color;
+    }
+
+    &.btn-danger {
+        background-color: red;
+    }
+  }
+
+  // Table
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+      border: 1px solid $border-color;
+      padding: $padding;
+      text-align: center;
+
+    //   &:first-child {
+        
+    //   }
+    }
+
+    th {
+      background-color: #f8f9fa;
+    }
+
+    td {
+      img {
+        max-width: 100px;
+        height: auto;
+      }
+    }
+  }
+
+  // No data
+  tr {
+    &.no-data {
+      td {
+        text-align: center;
+        color: #888;
+      }
+    }
+  }
+}
