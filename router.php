@@ -11,6 +11,7 @@ use Controllers\LoginFormControllers;
 use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
+use Controllers\ProductByGammeControllers;
 use AdminControllers\AdminDashboardControllers;
 use AdminControllers\AdminGammesControllers;
 use AdminControllers\AdminProductsControllers;
@@ -31,8 +32,13 @@ switch ($action) {
         break;
     
     case 'gammes':
-        $gammesControllers = new GammesControllers();
-        $gammesControllers->showGammes();
+        if($id) {
+            $productsByGammeControllers = new ProductByGammeControllers();
+            $productsByGammeControllers->showProductByGammes($id);
+        } else {
+            $gammesControllers = new GammesControllers();
+            $gammesControllers->showGammes();
+        }
         break;
 
     case 'login':

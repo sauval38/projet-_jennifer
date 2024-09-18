@@ -418,7 +418,7 @@ footer p {
   color: rgb(237, 142, 156);
 }
 
-.gammes-container {
+.gammes-container, .products-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -427,7 +427,7 @@ footer p {
   min-height: 300px;
   position: relative;
 }
-.gammes-container a {
+.gammes-container a, .products-container a {
   width: 22%;
   margin: 1rem;
   padding: 1rem;
@@ -445,10 +445,10 @@ footer p {
   justify-content: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.gammes-container a:hover {
+.gammes-container a:hover, .products-container a:hover {
   transform: translateY(-5px);
 }
-.gammes-container a .gamme-item {
+.gammes-container a .gamme-item, .products-container a .gamme-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -457,12 +457,12 @@ footer p {
   height: 100%;
   position: relative;
 }
-.gammes-container a .gamme-item figure {
+.gammes-container a .gamme-item figure, .products-container a .gamme-item figure {
   position: relative;
   width: 100%;
   margin: 0;
 }
-.gammes-container a .gamme-item figure img {
+.gammes-container a .gamme-item figure img, .products-container a .gamme-item figure img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
@@ -470,7 +470,7 @@ footer p {
   -o-object-position: 40% 50%;
      object-position: 40% 50%;
 }
-.gammes-container a .gamme-item figure figcaption {
+.gammes-container a .gamme-item figure figcaption, .products-container a .gamme-item figure figcaption {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -481,7 +481,7 @@ footer p {
   padding: 10px;
   text-align: center;
 }
-.gammes-container a .gamme-item p.description {
+.gammes-container a .gamme-item p.description, .products-container a .gamme-item p.description {
   margin-top: 10px;
   padding: 0 10px;
   text-align: center;

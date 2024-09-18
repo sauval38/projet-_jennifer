@@ -15,6 +15,9 @@ RewriteRule ^home$ index.php?action=home [L,QSA]
 # Redirection pour l'accès à 'gammes'
 RewriteRule ^gammes$ index.php?action=gammes [L,QSA]
 
+# Redirection pour l'accès à 'gammes'
+RewriteRule ^gammes/([0-9]+)$ index.php?action=gammes&id=$1 [L,QSA]
+
 # Redirection pour l'accès à 'mot de passe oublié'
 RewriteRule ^forgot-password$ index.php?action=forgot-password [L,QSA]
 

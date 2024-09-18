@@ -1,4 +1,4 @@
-.gammes-container {
+.gammes-container, .products-container {
     @include flexbox(space-evenly, false, false, wrap);
     margin-top: 20px;
     padding: 20px;

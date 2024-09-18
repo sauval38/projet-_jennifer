@@ -8,7 +8,7 @@ class GammesViews {
         <div class="gammes-container">
             <?php if (!empty($gammes)) : ?>
                 <?php foreach ($gammes as $gamme) : ?>
-                    <a href="<?php echo htmlspecialchars($gamme['name']); ?>">
+                    <a href="gammes/<?php echo htmlspecialchars($gamme['id']); ?>">
                         <div class="gamme-item">
                             <figure>
                                 <img loading="lazy" src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" />
