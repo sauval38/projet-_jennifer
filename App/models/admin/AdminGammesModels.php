@@ -12,6 +12,13 @@ class AdminGammesModels {
         $this->db = $database->getConnection();
     }
 
+    public function getAllGammes() {
+        $query = "SELECT * FROM products_range";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getGammeById($id) {
         $query = "SELECT * FROM products_range WHERE id = :id";
         $stmt = $this->db->prepare($query);

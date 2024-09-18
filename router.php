@@ -13,6 +13,8 @@ use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use AdminControllers\AdminDashboardControllers;
 use AdminControllers\AdminGammesControllers;
+use AdminControllers\AdminProductsControllers;
+use AdminControllers\AdminProductSearchController;
 
 $pdo = new Database;
 
@@ -123,6 +125,41 @@ switch ($action) {
                         break;
                 }
                 break;
+
+                case 'products':
+                    $adminProduitsController = new AdminProductsControllers();
+                    $produitsControllers = new AdminProductSearchController();
+        
+                    switch ($crud) {
+                        case 'create':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $adminProduitsController->handleFormSubmission();
+                            } else {
+                                $adminProduitsController->showForm();
+                            }
+                            break;
+        
+                        case 'edit':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $adminProduitsController->handleFormSubmission();
+                            } else {
+                                $adminProduitsController->showForm($id);
+                            }
+                            break;
+        
+                        case 'delete':
+                            if ($id) {
+                                $adminProduitsController->deleteProduct($id);
+                            } else {
+                                echo "ID manquant pour la suppression.";
+                            }
+                            break;
+        
+                        default:
+                            $produitsControllers->showProducts();
+                            break;
+                    }
+                    break;
         }
         }
         

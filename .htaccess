@@ -38,3 +38,16 @@ RewriteRule ^admin/gammes/edit/([0-9]+)$ index.php?action=admin&step=gammes&crud
 
 # Redirection pour l'accès à 'admin/gammes/delete'
 RewriteRule ^admin/gammes/delete/([0-9]+)$ index.php?action=admin&step=gammes&crud=delete&id=$1 [L,QSA]
+
+# Redirection pour l'accès à 'admin/products'
+RewriteRule ^admin/products$ index.php?action=admin&step=products [L,QSA]
+
+# Redirection pour l'accès à 'admin/products/create'
+RewriteRule ^admin/products/create$ index.php?action=admin&step=products&crud=create [L,QSA]
+
+# Redirection pour l'accès à 'admin/products/edit/([0-9]+)'
+RewriteRule ^admin/products/edit/([0-9]+)$ index.php?action=admin&step=products&crud=edit&id=$1 [L,QSA]
+
+# Redirection pour l'accès à 'admin/products/delete/([0-9]+)'
+RewriteRule ^admin/products/delete/([0-9]+)$ index.php?action=admin&step=products&crud=delete&id=$1 [L,QSA]
+
