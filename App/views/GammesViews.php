@@ -11,7 +11,7 @@ class GammesViews {
                     <a href="<?php echo htmlspecialchars($gamme['name']); ?>">
                         <div class="gamme-item">
                             <figure>
-                                <img src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" />
+                                <img loading="lazy" src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" />
                                 <figcaption>
                                     <h4><?php echo htmlspecialchars($gamme['name']); ?></h4>
                                 </figcaption>
