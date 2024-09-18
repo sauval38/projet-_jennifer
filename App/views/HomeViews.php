@@ -41,13 +41,13 @@ class HomeViews {
                     </div>
                     <div class="image-container">
                         <img src="./assets/images/accueil_3.jpg" alt="accueil">
-                        <a href="url-de-la-page.html" class="button-link left">PRÉSENTATION</a>
-                    </div>
+                        <button class="button-link right" onclick="window.location.href='url-de-la-page.html'">PRÉSENTATION</button>
+                        </div>
                 </section>
                 <section class="section-container">
                     <div class="image-container">
                         <img src="./assets/images/accueil_4.jpg" alt="accueil">
-                        <a href="url-de-la-page.html" class="button-link right">MES GAMMES</a>
+                        <button class="button-link right" onclick="window.location.href='gammes'">MES GAMMES</button>
                     </div>
                     <div class="text-block">
                         <h4>Une idée, une création</h4>

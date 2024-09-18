@@ -1,6 +1,6 @@
 #menu {
     background-color: $background-color_isabeline;
-    box-shadow: 0 5px 17px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 17px rgba($box-shadow_black, 0.1);;
     
     a{
         &.logo-site {
@@ -9,23 +9,23 @@
             transform: translateX(-50%);
             top: 12.5px;
                 img {
-                    height: 75px;
                     width: auto;
+                    height: 75px;
                 }
+            }
         }
-    }
     
     .menu-items {
         @include flexbox(space-between, center);
         height: 100px;
 
         a {
-            text-decoration: none;
+            @include text-decoration(none);
             color: $color_salmonpink; 
-            font-size: $fontsize_para; 
-            padding: 10px 20px; 
+            font-size: $fontsize_para;
             font-family: $fonttitleH1;
-
+            padding: 10px 20px; 
+        
             &:hover {
                 color:$color_taupe;
             }
@@ -33,15 +33,15 @@
             &.logo-site {
                 margin-top: 5px;
                 img {
-                    height: 75px;
                     width: auto;
+                    height: 75px;
                 }
             }
             
             &.cart-icon {
                 i {
-                    margin-right: 8px;
                     font-size: $fontsize_icon;
+                    margin-right: 8px;
                 }
             }
         }

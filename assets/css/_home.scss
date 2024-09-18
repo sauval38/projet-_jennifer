@@ -1,49 +1,45 @@
 .carousel-container {
-    display: flex;
+    @include flexbox ();
+    position: relative;
     width: 100%;
     max-width: 1300px; 
     margin: 0 auto;
-    position: relative; 
-
+     
     .carousel-side {
-        display: flex;
-        align-items: center; 
-        justify-content: center; 
-        flex-direction: column;
+        @include flexbox (center, center, column);
+        @include text-align (center);
+        background-color: $background-color_isabeline;
+        height: auto;  
         width: 200px; 
         padding: 20px; 
-        background-color: $background-color_isabeline;  
         margin: 30px 0;
-        height: auto; 
-        text-align: center; 
 
         img {
+            height: auto;
             width: 100px; 
-            height: auto; 
             margin: 20px 0;
         }
     } 
 
     .carousel {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        width: calc(100% - 400px);
-        margin: 30px 0;
+        @include flexbox (false, center);
         overflow: hidden;
         position: relative;
+        flex: 1;
+        width: calc(100% - 400px);
+        margin: 30px 0;
 
         .carousel-wrapper {
-            display: flex;
+            @include flexbox ();
             transition: transform 0.5s ease-in-out;
 
             .carousel-slide {
                 min-width: 100%; 
 
                 img {
+                    object-fit: cover; 
                     width: 100%;
                     height: 100%; 
-                    object-fit: cover; 
                 }
             }
         }
@@ -51,69 +47,46 @@
 }
 
 #contenu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flexbox (false, center, column);
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
 
-    h3 {
-        font-size: 25px;
-        margin-bottom: 40px;
-        text-align: center;
-    }
-
     .content-wrapper {
-        display: flex;
-        align-items: stretch; 
-        height: 300px;
-        gap: 70px; 
+        @include flexbox (false, stretch);
         background-color: $background-color_isabeline;
+        height: 300px;
+        margin-top: 30px;
+        gap: 70px; 
         
         .section-container {
-            display: flex;
-            flex-direction: row;
-
+            @include flexbox (false, false, row);
+        
             .text-block {
+                @include flexbox (center, false, column);
+                @include text-align(left);
+                background-color: $background-color_isabeline;
                 max-width: 200px;
                 height: 300px;
                 padding: 20px;
-                background-color: $background-color_isabeline;
-                text-align: left;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
             }
     
             .image-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include flexbox (false, center, column);
+                position: relative;
                 width: 100%;
                 max-width: 500px;
-                position: relative;
     
                 img {
+                    object-fit: cover;
                     width: 400px;
                     height: 300px;
-                    object-fit: cover;
-                }
     
-                .button-link {
+                }
+
+                button {
                     position: absolute;
-                    bottom: 20px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background-color: $background-color_isabeline;
-                    color: $color_black;
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    text-decoration: none;
-                    border-radius: $border_radius_input;
-                    cursor: pointer;
-                    text-align: center;
-                    border: none;
+                    bottom: 10px;
                 }
             }
         }

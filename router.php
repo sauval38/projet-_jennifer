@@ -3,6 +3,7 @@ require_once('vendor/autoload.php');
 
 use App\Database;
 
+use Controllers\ContactControllers;
 use Controllers\FormForgotPasswordControllers;
 use Controllers\FormResetPasswordControllers;
 use Controllers\GeneralConditionsSaleControllers;
@@ -125,9 +126,16 @@ switch ($action) {
                 break;
         }
         }
-        
-        
         break;
+
+    case 'contact':
+        $contactControllers = new ContactControllers();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $contactControllers->sendMessage();
+        } else {
+            $contactControllers->Contact();
+        }
+        break;    
         
     case 'privacy':
         $privacyPolicyControllers = new PrivacyPolicyControllers();

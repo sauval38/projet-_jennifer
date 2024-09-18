@@ -5,9 +5,9 @@ namespace AdminViews;
 class AdminGammeFormViews {
     public function displayForm($gamme) {
         ?>
-        <div class="gamme-form-container">
-            <h1><?php echo $gamme['id'] ? 'Modifier la Gamme' : 'Créer une Nouvelle Gamme'; ?></h1>
-            <form action="admin/gammes/<?php echo $gamme['id'] ? 'edit/' . $gamme['id'] : 'create'; ?>" method="post" enctype="multipart/form-data">
+        <h1><?php echo $gamme['id'] ? 'Modifier la Gamme' : 'Créer une Nouvelle Gamme'; ?></h1>
+        <div id="gamme-form-create">
+            <form class="form" action="admin/gammes/<?php echo $gamme['id'] ? 'edit/' . $gamme['id'] : 'create'; ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($gamme['id']); ?>">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($gamme['name']); ?>" required>

@@ -16,3 +16,19 @@
         flex-grow: $fg; 
     }
 }
+
+@mixin text-align($alignment) {
+    @if $alignment == left or $alignment == right or $alignment == center or $alignment == justify {
+      text-align: $alignment;
+    } @else {
+      @warn "Valeur invalide pour text-align: #{$alignment}";
+    }
+  }
+
+@mixin text-decoration($decoration) {
+    @if $decoration == none or $decoration == underline or $decoration == overline or $decoration == line-through or $decoration == blink {
+      text-decoration: $decoration;
+    } @else {
+      @warn "Valeur invalide pour text-decoration: #{$decoration}";
+    }
+  }

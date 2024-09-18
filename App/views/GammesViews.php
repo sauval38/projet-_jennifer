@@ -5,6 +5,7 @@ namespace Views;
 class GammesViews {
     public function displayGammes($gammes) {
         ?>
+        <h1>Ici, ma liste des gammes de mon univers</h1>
         <div class="gammes-container">
             <?php if (!empty($gammes)) : ?>
                 <?php foreach ($gammes as $gamme) : ?>

@@ -1,11 +1,15 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
 }
 body {
+    @include flexbox(false, false, column);
     background-color: $background-color_minipink;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+}
+
+#body-content {
+    @include flexbox(center, center, column);
+    margin: auto;
 }
