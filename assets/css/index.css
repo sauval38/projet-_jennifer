@@ -513,7 +513,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-.gammes-container, .products-container {
+.gammes-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -539,10 +539,10 @@ h1 {
   padding: 1rem;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.gammes-container a:hover, .products-container a:hover {
+.gammes-container a:hover {
   transform: translateY(-5px);
 }
-.gammes-container a .gamme-item, .products-container a .gamme-item {
+.gammes-container a .gamme-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -551,7 +551,7 @@ h1 {
   width: 100%;
   height: 100%;
 }
-.gammes-container a .gamme-item figure, .products-container a .gamme-item figure {
+.gammes-container a .gamme-item figure {
   position: relative;
   width: 100%;
   margin: 0;
@@ -582,7 +582,7 @@ h1 {
   padding: 0 10px;
 }
 
-.admin-gammes-container, .product-search-container {
+.admin-gammes-container {
   padding: 20px;
 }
 .admin-gammes-container h1 {
@@ -643,10 +643,10 @@ h1 {
 .admin-gammes-container table td {
   font-size: 18px;
 }
-.admin-gammes-container table td img, .product-search-container table td img {
+.admin-gammes-container table td img {
   max-width: 100px;
   height: auto;
 }
-.admin-gammes-container tr.no-data td, .product-search-container tr.no-data td {
+.admin-gammes-container tr.no-data td {
   text-align: center;
 }/*# sourceMappingURL=index.css.map */
