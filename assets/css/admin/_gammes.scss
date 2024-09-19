@@ -1,3 +1,4 @@
+.admin-gammes-container {
 // Variables
 $primary-color: #000000;
 $secondary-color: #000000;
@@ -10,52 +11,71 @@ $border-radius: 5px;
   padding: 20px;
 
   h1 {
-    margin-bottom: 20px;
+    @include text-align(center);
+    color: $color_salmonpink;
+    margin-top: 60px;
+    margin-bottom: 30px;
   }
 
-  // Buttons
   .btn {
+    @include text-decoration(none);
+    color: $color_black;
+    border-radius: $border-radius;
+    font-size: $fontsize_h4;
     display: inline-block;
     padding: 10px 15px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: $border-radius;
     margin-right: 10px;
 
     &.btn-primary {
-      background-color: $primary-color;
+      @include flexbox(center);
+      background-color: $color_isabeline;
+      margin: 20px 0;
+      margin-bottom: 50px;
+      
+      &:hover {
+        background-color: $background-color_salmonpink;
+        color: $color_white;
+      }
     }
 
     &.btn-secondary {
-      background-color: $secondary-color;
+      background-color: $color_isabeline;
+
+      &:hover {
+        background-color: $background-color_salmonpink;
+        color: $color_white;
+      }
     }
 
     &.btn-danger {
-        background-color: red;
+      background-color: $color_isabeline;
+      
+      &:hover {
+        background-color: $background-color_salmonpink;
+        color: $color_white;
+      }
     }
   }
 
-  // Table
   table {
-    width: 100%;
     border-collapse: collapse;
+    width: 100%;
     margin-top: 20px;
 
     th, td {
-      border: 1px solid $border-color;
-      padding: $padding;
-      text-align: center;
-
-    //   &:first-child {
-        
-    //   }
+      @include text-align(center);
+      border: 1px solid $border_black;
+      padding: 10px;
     }
 
     th {
-      background-color: #f8f9fa;
+      background-color: $background-color_salmonpink;
+      font-size: $fontsize_h3;
+      font-style: italic;
     }
 
     td {
+      font-size: $fontsize_h4;
       img {
         max-width: 100px;
         height: auto;
@@ -63,12 +83,10 @@ $border-radius: 5px;
     }
   }
 
-  // No data
   tr {
     &.no-data {
       td {
-        text-align: center;
-        color: #888;
+        @include text-align(center);
       }
     }
   }

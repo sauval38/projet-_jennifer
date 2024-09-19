@@ -1,71 +1,71 @@
-.gammes-container, .products-container {
+h1 {
+    @include text-align(center);
+    color: $color_salmonpink;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.gammes-container {
     @include flexbox(space-evenly, false, false, wrap);
+    position: relative;
     margin-top: 20px;
     padding: 20px;
     min-height: 300px;
-    position: relative;
 
     a {
+        @include flexbox(center, false, column);
+        @include text-align(center);
+        @include text-decoration(none);
+        background-color: rgba($background-color_isabeline, 0.8);
+        color: $color_salmonpink;
+        font-size: $fontsize_para;
+        border-radius: $border_radius;
+        border: 1px solid $border_taupe;
+        text-transform: uppercase;
         width: 22%;
         margin: 1rem;
         padding: 1rem;
-        font-size: 1.2rem;
-        border: 1px solid $border_taupe;
-        border-radius: 8px;
-        text-align: center;
-        text-decoration: none;
-        background-color: rgba($background-color_isabeline, 0.8);
-        color: $color_salmonpink;
-        text-transform: uppercase;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         transition: transform 0.3s, box-shadow 0.3s;
-
         &:hover {
             transform: translateY(-5px);
         }
 
         .gamme-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            @include flexbox(center, center, column);
+            position: relative;
             width: 100%;
             height: 100%;
-            position: relative;
-
+            
             figure {
                 position: relative;
                 width: 100%;
                 margin: 0;
 
                 img {
+                    object-fit: cover;
                     width: 100%;
                     height: 300px;
-                    object-fit: cover;
                     object-position: 40% 50%;
                 }
 
                 figcaption {
+                    @include text-align(center);
+                    color: $color_white; 
+                    background-color: rgba($background-color_black, 0.5);
                     position: absolute;
-                    top: 50%; // Positionne verticalement au centre
-                    left: 50%; // Positionne horizontalement au centre
-                    transform: translate(-50%, -50%); // Centrage exact
+                    top: 50%; 
+                    left: 50%; 
                     width: 100%;
-                    background: rgba(0, 0, 0, 0.5); // Fond semi-transparent pour améliorer la lisibilité
-                    color: #fff; // Couleur du texte
                     padding: 10px;
-                    text-align: center;
+                    transform: translate(-50%, -50%); 
                 }
             }
 
             p.description {
-                margin-top: 10px; // Espace entre l'image et la description
-                padding: 0 10px; // Padding horizontal pour le texte
-                text-align: center; // Aligne le texte au centre
+                @include text-align(center); 
                 font-style: italic;
+                margin-top: 10px; 
+                padding: 0 10px;
             }
         }
     }

@@ -1,64 +1,41 @@
-h1 {
+    h1 {
     font-family: $fonttitleH1;
-    color: $color_salmonpink;
     font-size: $fontsize_h1;
-    text-align: center;
-    margin-top: 30px;
-}
+    }
 
-h2 {
+    h2 {
     font-family: $fonttitle;
-    color: $color_minipink;
     font-size: $fontsize_h2;
-    margin-bottom: 20px;
-    text-align: center;
-}
+    }
 
-h3 {
+    h3 {    
     font-family: $fonttitle;
-    max-width: 600px; 
-    margin-left: auto; 
-    margin-right: auto;
-    padding: 1rem;
-    border: 1px solid $border_taupe;
-    border-radius: $border_radius;
-    background-color: $background-color_isabeline;
-    color: $color_salmonpink;
-    margin-top: 30px;
-    font-size: $fontsize_h3;
-    text-align: center;
-    margin: 10px 0;
-}
+    font-size: $fontsize_h3;    
+    }
 
-h4 {
+    h4 {
     font-family: $fonttitle;
     font-size: $fontsize_h4;
-    color: $color_salmonpink;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    font-style: italic;
-}
+    }
 
-p {
+    p {
+    font-family: $fontpara;
     color: $color_black;
-    margin: 0 0 15px;
     font-size: $fontsize_para;
-    line-height: 1.2;
-    text-align: center;
-}
+    }
 
-button {
-    margin-top: 1rem;
-    padding: 10px 20px;
+    button {
     background-color: $background-color_taupe;
     color: $color_white;
-    border: none;
     border-radius: $border_radius_input;
     font-size: $fontsize_para;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
     border: 1px solid $border_taupe;
-
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+   
     &:hover {
         background-color: $background-color_isabeline;
         color: $color_black;
@@ -67,17 +44,17 @@ button {
 }
 
 .alert {
+    @include text-align(center);
+    border-radius: $border_radius;
+    border: 1px solid transparent;
     padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    text-align: center;
 }
 
 .alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
+    color: $color_black;
+    background-color: $background-color_green;
+    border-color: $border_taupe;
 }
 
 

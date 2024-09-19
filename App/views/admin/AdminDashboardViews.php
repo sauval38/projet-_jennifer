@@ -5,7 +5,7 @@ namespace AdminViews;
 class AdminDashboardViews {
     public function displayAdminBoard() {
         ?>
-        <h1>BIENVENUE, CHÈRE ADMIN</h1>
+        <h1>BIENVENUE, CHÈR(E) ADMIN</h1>
         <section id="admin-board">
             <a href="admin/gammes">GAMMES</a>
             <a href="admin/products">PRODUITS</a>

@@ -10,12 +10,11 @@ class PrivacyPolicyViews {
             <section>
                 <p class="titre"><strong>MENTIONS LÉGALES</strong></p>
                 <p>Jennifer BLASCO – Maison Héméra est une affaire personnelle en micro-entreprise, dont le siège est situé au 10 chemin du Bois, 38510 Sermerieu, immatriculée à l’INSEE et inscrite au Registre des sociétés sous le n° SIRET : 450 542 717 00043.</p> 
-                <p>Email : hello@maisonhemera.com (ci-après « Jennifer BLASCO – Maison Héméra »).</p>
-
+                <p><strong>Adresse:</strong></p>
                 <address>
                     <p>10 chemin du Bois, 38510 Sermerieu</p>
-                    <p>SIRET : 828 062 976 00026</p>
-                    <p>Email : hello@maisonhemera.com</p>
+                    <p><strong>SIRET:</strong>  828 062 976 00026</p>
+                    <p><strong>Email:</strong> hello@maisonhemera.com</p>
                 </address>
 
                 <p>Site web hébergé par</p>

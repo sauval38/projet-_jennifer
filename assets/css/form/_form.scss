@@ -1,15 +1,34 @@
-#form-login-register, #form-forgot-password {
+h1 {
+    @include text-align(center);
+    color: $color_salmonpink;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact {
     @include flexbox(space-evenly,  flex-start);
-    padding: 50px;
     border-radius: $border_radius; 
+    padding: 50px;
+    gap: 300px;
 
     .form {
         @include flexbox(false, false, column);
         background-color: $background-color_salmonpink;
-        padding: 30px;
         border-radius: $border_radius;
+        padding: 30px;
+
+        h2 {
+            @include text-align(center);
+            color: $color_minipink;
+            margin-bottom: 20px;
+        }
+
+        p {
+            
+        }
 
         label {
+            @include text-align(center);
             font-family: $fontpara;
             font-size: $fontsize_h3;
             color: $color_black;
@@ -17,35 +36,47 @@
         }
 
         input {
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid $border_taupe;
             background-color: $background-color_minipink;
             border-radius: $border_radius_input;
             font-size: $fontsize_para;
             color: $color_black;
+            border: 1px solid $border_taupe;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            background-color: $background-color_minipink;
+            font-size: $fontsize_para;
+            color: $color_black;
+            border: 1px solid $border_taupe;
+            width: 500px;
+            height: 200px;
+            padding: 10px;
+            margin-bottom: 20px;
         }
 
         .forgot-password {
+            @include text-align(center);
+            @include text-decoration(none);
             font-family: $fontpara;
             font-size: $fontsize_h3;
             color: $color_black;
-            margin-top: -10px;
-            text-align: center; 
-            text-decoration: none; 
+            margin-top: -10px; 
             &:hover {
-                text-decoration: underline; 
-                color: $color_white;
+                @include text-decoration(underline);
+                color: $color_white; 
             }
         }
 
         p {
-            font-family: $fontpara;
-            font-size: $fontsize_para;
-            color: $color_black;
-            line-height: 1.4;
+            @include text-align(justify);
             margin-bottom: 15px;
-            text-align: justify;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
         }
     }
 }

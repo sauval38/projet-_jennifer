@@ -1,0 +1,32 @@
+.contact-info {
+    @include flexbox(false, center);
+    background-color: $color_salmonpink;
+    border-radius: $border_radius;
+    margin-bottom: 50px;
+    padding: 10px;
+    width: 100%;
+
+    .contact-image {
+        height: auto;
+        width: 400px; 
+        margin-right:80px; 
+    }
+
+    .contact-details {
+        @include flexbox(center, center, column);
+        @include text-align(center); 
+        height: 100%; 
+
+        h2 {
+            color: $color_minipink;
+            margin-bottom: 10px; 
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+    }
+}
