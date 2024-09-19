@@ -160,6 +160,14 @@ switch ($action) {
                                 echo "ID manquant pour la suppression.";
                             }
                             break;
+
+                        case 'deleteImage':
+                            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                                $adminProduitsController->deleteImage();  // Méthode pour supprimer une image
+                            } else {
+                                echo "Action non autorisée.";
+                            }
+                            break;
         
                         default:
                             $produitsControllers->showProducts();

@@ -13,7 +13,13 @@ class ProductByGammeModels {
     }
 
     public function getProductByGammes($id) {
-        $queryGammes = "SELECT * FROM products WHERE product_range_id = ?";
+        $queryGammes = "
+            SELECT p.*, pi.image_path
+            FROM products p
+            LEFT JOIN product_images pi ON p.id = pi.product_id
+            WHERE p.product_range_id = ?
+            GROUP BY p.id
+        ";
         $product = $this->db->prepare($queryGammes);
         $product->execute([$id]);
         return $product->fetchAll(\PDO::FETCH_ASSOC);

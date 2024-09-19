@@ -12,6 +12,7 @@ class ProductByGammeViews {
                     <a href="gammes/<?php echo htmlspecialchars($gammeId);?>/<?php echo htmlspecialchars($product['id']); ?>">
                         <div class="gamme-item">
                             <figure>
+                                <!-- Affiche la première image du produit -->
                                 <img loading="lazy" src="<?php echo htmlspecialchars($product['image_path']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" />
                                 <figcaption>
                                     <h4><?php echo htmlspecialchars($product['name']); ?></h4>
@@ -22,9 +23,10 @@ class ProductByGammeViews {
                     </a>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p>Aucune gamme disponible.</p>
+                <p>Aucun produit disponible.</p>
             <?php endif; ?>
         </div>
         <?php
     }
 }
+    

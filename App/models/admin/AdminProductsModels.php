@@ -50,8 +50,14 @@ class AdminProductsModels {
         $stmt->bindParam(':stock', $stock);
         $stmt->bindParam(':height', $height);
         $stmt->bindParam(':weight', $weight);
-        return $stmt->execute();
+    
+        if ($stmt->execute()) {
+            return $this->db->lastInsertId(); // Retourne le dernier ID inséré
+        }
+        
+        return false; // En cas d'erreur
     }
+    
 
     public function updateProduct($id, $product_range_id, $name, $description, $price, $stock, $height, $weight) {
         $query = "UPDATE products 

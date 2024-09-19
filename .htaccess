@@ -54,3 +54,5 @@ RewriteRule ^admin/products/edit/([0-9]+)$ index.php?action=admin&step=products&
 # Redirection pour l'accès à 'admin/products/delete/([0-9]+)'
 RewriteRule ^admin/products/delete/([0-9]+)$ index.php?action=admin&step=products&crud=delete&id=$1 [L,QSA]
 
+# Redirection pour la suppression d'une image d'un produit spécifique
+RewriteRule ^admin/products/deleteImage/([0-9]+)/product/([0-9]+)$ index.php?action=admin&step=products&crud=deleteImage&image_id=$1&product&product_id=$2 [L,QSA]
