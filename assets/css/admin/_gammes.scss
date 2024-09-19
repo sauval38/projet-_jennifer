@@ -1,6 +1,13 @@
 .admin-gammes-container {
   padding: 20px;
 
+  h1 {
+    @include text-align(center);
+    color: $color_salmonpink;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
   .btn {
     @include text-decoration(none);
     color: $color_black;

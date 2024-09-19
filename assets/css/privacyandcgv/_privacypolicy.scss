@@ -1,3 +1,10 @@
+h1 {
+  @include text-align(center);
+  color: $color_salmonpink;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
 #privacy-policy, #general-conditions-sale{
 
   section {
@@ -10,11 +17,15 @@
       padding: 20px;
       
       p {
+        @include text-align(center);
+        margin: 0 0 15px;
+        line-height: 1.4;
+
         &.titre {
+
           strong{
             font-size: $fontsize_h2;
           }
-          
         }
       }
     

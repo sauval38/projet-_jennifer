@@ -1,3 +1,10 @@
+h1 {
+    @include text-align(center);
+    color: $color_salmonpink;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
 #form-login-register, #form-forgot-password, #gamme-form-create, #form-contact {
     @include flexbox(space-evenly,  flex-start);
     border-radius: $border_radius; 
@@ -9,6 +16,16 @@
         background-color: $background-color_salmonpink;
         border-radius: $border_radius;
         padding: 30px;
+
+        h2 {
+            @include text-align(center);
+            color: $color_minipink;
+            margin-bottom: 20px;
+        }
+
+        p {
+            
+        }
 
         label {
             @include text-align(center);

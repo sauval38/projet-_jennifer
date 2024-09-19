@@ -21,54 +21,29 @@ body {
 }
 
 h1 {
-  text-align: center;
   font-family: "Cinzel Decorative", sans-serif;
-  color: rgb(237, 142, 156);
   font-size: 50px;
-  margin-top: 60px;
-  margin-bottom: 30px;
 }
 
 h2 {
-  text-align: center;
   font-family: "Cinzel", sans-serif;
-  color: rgb(247, 214, 224);
   font-size: 28px;
-  margin-bottom: 20px;
 }
 
 h3 {
-  text-align: center;
-  border-radius: 16px;
-  background-color: rgb(253, 247, 242);
   font-family: "Cinzel", sans-serif;
-  color: rgb(237, 142, 156);
   font-size: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 600px;
-  padding: 1rem;
-  border: 1;
-  margin-top: 30px;
-  margin: 10px 0;
 }
 
 h4 {
-  text-align: center;
   font-family: "Cinzel", sans-serif;
   font-size: 18px;
-  color: rgb(237, 142, 156);
-  font-style: italic;
-  margin-bottom: 0.5rem;
 }
 
 p {
-  text-align: center;
   font-family: "Carlito", sans-serif;
   color: rgb(0, 0, 0);
   font-size: 16px;
-  margin: 0 0 15px;
-  line-height: 1.4;
 }
 
 button {
@@ -145,6 +120,13 @@ button:hover {
   margin-right: 8px;
 }
 
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
 .carousel-container {
   display: flex;
   position: relative;
@@ -168,6 +150,20 @@ button:hover {
   height: auto;
   width: 100px;
   margin: 20px 0;
+}
+.carousel-container .carousel-side h3 {
+  text-align: center;
+  background-color: rgb(253, 247, 242);
+  border-radius: 16px;
+  color: rgb(237, 142, 156);
+  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  padding: 1rem;
+  border: 1;
+  margin-top: 30px;
+  margin: 10px 0;
 }
 .carousel-container .carousel {
   display: flex;
@@ -200,6 +196,20 @@ button:hover {
   max-width: 1100px;
   margin: 0 auto;
 }
+#contenu h3 {
+  text-align: center;
+  background-color: rgb(253, 247, 242);
+  border-radius: 16px;
+  color: rgb(237, 142, 156);
+  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  padding: 1rem;
+  border: 1;
+  margin-top: 30px;
+  margin: 10px 0;
+}
 #contenu .content-wrapper {
   display: flex;
   align-items: stretch;
@@ -222,6 +232,12 @@ button:hover {
   height: 300px;
   padding: 20px;
 }
+#contenu .content-wrapper .section-container .text-block h4 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
 #contenu .content-wrapper .section-container .image-container {
   display: flex;
   align-items: center;
@@ -239,6 +255,39 @@ button:hover {
 #contenu .content-wrapper .section-container .image-container button {
   position: absolute;
   bottom: 10px;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  background-color: rgb(237, 142, 156);
+  border-radius: 16px;
+  margin-bottom: 50px;
+  padding: 10px;
+  width: 100%;
+}
+.contact-info .contact-image {
+  height: auto;
+  width: 400px;
+  margin-right: 80px;
+}
+.contact-info .contact-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+.contact-info .contact-details h2 {
+  color: rgb(247, 214, 224);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+.contact-info .contact-details p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 footer {
@@ -315,6 +364,13 @@ footer p {
   margin-top: 4.5rem;
 }
 
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
 #form-login-register, #form-forgot-password, #gamme-form-create, #form-contact {
   display: flex;
   justify-content: space-evenly;
@@ -329,6 +385,11 @@ footer p {
   background-color: rgb(237, 142, 156);
   border-radius: 16px;
   padding: 30px;
+}
+#form-login-register .form h2, #form-forgot-password .form h2, #gamme-form-create .form h2, #form-contact .form h2 {
+  text-align: center;
+  color: rgb(247, 214, 224);
+  margin-bottom: 20px;
 }
 #form-login-register .form label, #form-forgot-password .form label, #gamme-form-create .form label, #form-contact .form label {
   text-align: center;
@@ -377,6 +438,13 @@ footer p {
   margin: 0 auto;
 }
 
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
 #privacy-policy section, #general-conditions-sale section {
   background-color: rgb(255, 255, 255);
   border-radius: 16px;
@@ -385,6 +453,11 @@ footer p {
   margin: 0 auto 20px;
   margin-top: 20px;
   padding: 20px;
+}
+#privacy-policy section p, #general-conditions-sale section p {
+  text-align: center;
+  margin: 0 0 15px;
+  line-height: 1.4;
 }
 #privacy-policy section p.titre strong, #general-conditions-sale section p.titre strong {
   font-size: 28px;
@@ -407,6 +480,13 @@ footer p {
   margin-bottom: 10px;
 }
 
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
 #admin-board {
   display: flex;
   justify-content: space-evenly;
@@ -424,6 +504,13 @@ footer p {
   width: 30%;
   margin: 1rem;
   padding: 1.5rem;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 .gammes-container {
@@ -497,6 +584,12 @@ footer p {
 
 .admin-gammes-container {
   padding: 20px;
+}
+.admin-gammes-container h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 .admin-gammes-container .btn {
   text-decoration: none;

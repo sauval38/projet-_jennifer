@@ -22,7 +22,7 @@ class GammesViews {
                     </a>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p>Aucune gamme disponible.</p>
+                <h3>Aucune gamme disponible.</h3>
             <?php endif; ?>
         </div>
         <?php
