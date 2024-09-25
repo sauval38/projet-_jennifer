@@ -24,6 +24,8 @@ $step = $_REQUEST['step'] ?? null;
 $action = $_REQUEST['action'] ?? null;
 $crud = $_REQUEST['crud'] ?? null;
 $id = $_REQUEST['id'] ?? null;
+$gammeId = $_REQUEST['gammeId'] ?? null;
+$productId = $_REQUEST['productId'] ?? null;
 $formType = $_POST['form_type'] ?? '';
 
 switch ($action) {
@@ -33,9 +35,13 @@ switch ($action) {
         break;
     
     case 'gammes':
-        if($id) {
-            $productsByGammeControllers = new ProductByGammeControllers();
-            $productsByGammeControllers->showProductByGammes($id);
+        if($gammeId) {
+            if ($productId) {
+                echo 'prout';
+            } else {
+                $productsByGammeControllers = new ProductByGammeControllers();
+                $productsByGammeControllers->showProductByGammes($id);
+            }
         } else {
             $gammesControllers = new GammesControllers();
             $gammesControllers->showGammes();
