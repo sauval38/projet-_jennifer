@@ -5,7 +5,7 @@ namespace AdminViews;
 class AdminProductSearchViews {
     public function displayProductList($products, $gammes, $selectedRangeId) {
         ?>
-        <div class="product-search-container">
+        <div id="product-search-container">
             <h1>Liste des Produits</h1>
             
             <!-- Formulaire de filtrage -->

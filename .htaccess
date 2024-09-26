@@ -62,3 +62,6 @@ RewriteRule ^admin/products/delete/([0-9]+)$ index.php?action=admin&step=product
 
 # Redirection pour la suppression d'une image d'un produit spécifique
 RewriteRule ^admin/products/deleteImage/([0-9]+)/product/([0-9]+)$ index.php?action=admin&step=products&crud=deleteImage&image_id=$1&product&product_id=$2 [L,QSA]
+
+# Redirection pour l'accès à 'admin/aboutMe'
+RewriteRule ^admin/aboutMe$ index.php?action=admin&step=aboutMe

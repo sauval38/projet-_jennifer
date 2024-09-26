@@ -78,6 +78,26 @@ button:hover {
   border-color: rgb(81, 68, 64);
 }
 
+select {
+  background-color: rgb(247, 214, 224);
+  border-radius: 50px;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(81, 68, 64);
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+select:focus {
+  outline: none;
+  border-color: rgb(237, 142, 156);
+  box-shadow: 0 0 5px rgb(237, 142, 156);
+}
+select option {
+  background-color: rgb(247, 214, 224);
+  color: rgb(0, 0, 0);
+}
+
 #menu {
   background-color: rgb(253, 247, 242);
   box-shadow: 0 5px 17px rgba(0, 0, 0, 0.1);
@@ -371,34 +391,35 @@ h1 {
   margin-bottom: 30px;
 }
 
-#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact {
+#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
+  flex-direction: column;
   border-radius: 16px;
   padding: 50px;
   gap: 300px;
 }
-#form-login-register .form, #form-forgot-password .form, #gamme-form-create .form, #form-contact .form {
+#form-login-register .form, #form-forgot-password .form, #gamme-form-create .form, #form-contact .form, #product-form-container .form, #admin-about-me .form {
   display: flex;
   flex-direction: column;
   background-color: rgb(237, 142, 156);
   border-radius: 16px;
   padding: 30px;
 }
-#form-login-register .form h2, #form-forgot-password .form h2, #gamme-form-create .form h2, #form-contact .form h2 {
+#form-login-register .form h2, #form-forgot-password .form h2, #gamme-form-create .form h2, #form-contact .form h2, #product-form-container .form h2, #admin-about-me .form h2 {
   text-align: center;
   color: rgb(247, 214, 224);
   margin-bottom: 20px;
 }
-#form-login-register .form label, #form-forgot-password .form label, #gamme-form-create .form label, #form-contact .form label {
+#form-login-register .form label, #form-forgot-password .form label, #gamme-form-create .form label, #form-contact .form label, #product-form-container .form label, #admin-about-me .form label {
   text-align: center;
   font-family: "Carlito", sans-serif;
   font-size: 20px;
   color: rgb(0, 0, 0);
   margin-bottom: 5px;
 }
-#form-login-register .form input, #form-forgot-password .form input, #gamme-form-create .form input, #form-contact .form input {
+#form-login-register .form input, #form-forgot-password .form input, #gamme-form-create .form input, #form-contact .form input, #product-form-container .form input, #admin-about-me .form input {
   background-color: rgb(247, 214, 224);
   border-radius: 50px;
   font-size: 16px;
@@ -407,7 +428,7 @@ h1 {
   padding: 10px;
   margin-bottom: 20px;
 }
-#form-login-register .form textarea, #form-forgot-password .form textarea, #gamme-form-create .form textarea, #form-contact .form textarea {
+#form-login-register .form textarea, #form-forgot-password .form textarea, #gamme-form-create .form textarea, #form-contact .form textarea, #product-form-container .form textarea, #admin-about-me .form textarea {
   background-color: rgb(247, 214, 224);
   font-size: 16px;
   color: rgb(0, 0, 0);
@@ -417,7 +438,7 @@ h1 {
   padding: 10px;
   margin-bottom: 20px;
 }
-#form-login-register .form .forgot-password, #form-forgot-password .form .forgot-password, #gamme-form-create .form .forgot-password, #form-contact .form .forgot-password {
+#form-login-register .form .forgot-password, #form-forgot-password .form .forgot-password, #gamme-form-create .form .forgot-password, #form-contact .form .forgot-password, #product-form-container .form .forgot-password, #admin-about-me .form .forgot-password {
   text-align: center;
   text-decoration: none;
   font-family: "Carlito", sans-serif;
@@ -425,15 +446,15 @@ h1 {
   color: rgb(0, 0, 0);
   margin-top: -10px;
 }
-#form-login-register .form .forgot-password:hover, #form-forgot-password .form .forgot-password:hover, #gamme-form-create .form .forgot-password:hover, #form-contact .form .forgot-password:hover {
+#form-login-register .form .forgot-password:hover, #form-forgot-password .form .forgot-password:hover, #gamme-form-create .form .forgot-password:hover, #form-contact .form .forgot-password:hover, #product-form-container .form .forgot-password:hover, #admin-about-me .form .forgot-password:hover {
   text-decoration: underline;
   color: rgb(255, 255, 255);
 }
-#form-login-register .form p, #form-forgot-password .form p, #gamme-form-create .form p, #form-contact .form p {
+#form-login-register .form p, #form-forgot-password .form p, #gamme-form-create .form p, #form-contact .form p, #product-form-container .form p, #admin-about-me .form p {
   text-align: justify;
   margin-bottom: 15px;
 }
-#form-login-register .form img, #form-forgot-password .form img, #gamme-form-create .form img, #form-contact .form img {
+#form-login-register .form img, #form-forgot-password .form img, #gamme-form-create .form img, #form-contact .form img, #product-form-container .form img, #admin-about-me .form img {
   display: block;
   margin: 0 auto;
 }
@@ -582,16 +603,14 @@ h1 {
   padding: 0 10px;
 }
 
-.admin-gammes-container {
+#admin-gammes-container, #product-search-container {
   padding: 20px;
 }
-.admin-gammes-container h1 {
+#admin-gammes-container h1, #product-search-container h1 {
   text-align: center;
   color: rgb(237, 142, 156);
-  margin-top: 60px;
-  margin-bottom: 30px;
 }
-.admin-gammes-container .btn {
+#admin-gammes-container .btn, #product-search-container .btn {
   text-decoration: none;
   color: rgb(0, 0, 0);
   border-radius: 16px;
@@ -600,53 +619,53 @@ h1 {
   padding: 10px 15px;
   margin-right: 10px;
 }
-.admin-gammes-container .btn.btn-primary {
+#admin-gammes-container .btn.btn-primary, #product-search-container .btn.btn-primary {
   display: flex;
   justify-content: center;
   background-color: rgb(253, 247, 242);
   margin: 20px 0;
   margin-bottom: 50px;
 }
-.admin-gammes-container .btn.btn-primary:hover {
+#admin-gammes-container .btn.btn-primary:hover, #product-search-container .btn.btn-primary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-.admin-gammes-container .btn.btn-secondary {
+#admin-gammes-container .btn.btn-secondary, #product-search-container .btn.btn-secondary {
   background-color: rgb(253, 247, 242);
 }
-.admin-gammes-container .btn.btn-secondary:hover {
+#admin-gammes-container .btn.btn-secondary:hover, #product-search-container .btn.btn-secondary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-.admin-gammes-container .btn.btn-danger {
+#admin-gammes-container .btn.btn-danger, #product-search-container .btn.btn-danger {
   background-color: rgb(253, 247, 242);
 }
-.admin-gammes-container .btn.btn-danger:hover {
+#admin-gammes-container .btn.btn-danger:hover, #product-search-container .btn.btn-danger:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-.admin-gammes-container table {
+#admin-gammes-container table, #product-search-container table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
-.admin-gammes-container table th, .admin-gammes-container table td {
+#admin-gammes-container table th, #admin-gammes-container table td, #product-search-container table th, #product-search-container table td {
   text-align: center;
   border: 1px solid rgb(0, 0, 0);
   padding: 10px;
 }
-.admin-gammes-container table th {
+#admin-gammes-container table th, #product-search-container table th {
   background-color: rgb(237, 142, 156);
   font-size: 20px;
   font-style: italic;
 }
-.admin-gammes-container table td {
+#admin-gammes-container table td, #product-search-container table td {
   font-size: 18px;
 }
-.admin-gammes-container table td img {
+#admin-gammes-container table td img, #product-search-container table td img {
   max-width: 100px;
   height: auto;
 }
-.admin-gammes-container tr.no-data td {
+#admin-gammes-container tr.no-data td, #product-search-container tr.no-data td {
   text-align: center;
 }/*# sourceMappingURL=index.css.map */

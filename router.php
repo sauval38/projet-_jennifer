@@ -1,4 +1,5 @@
 <?php
+
 require_once('vendor/autoload.php');
 
 use App\Database;
@@ -13,6 +14,7 @@ use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use Controllers\ProductByGammeControllers;
+use AdminControllers\AdminAboutMeControllers;
 use Controllers\ProductPageControllers;
 use AdminControllers\AdminDashboardControllers;
 use AdminControllers\AdminGammesControllers;
@@ -34,7 +36,7 @@ switch ($action) {
         $homeControllers = new HomeControllers();
         $homeControllers->home();
         break;
-    
+
     case 'gammes':
         if($gammeId) {
             if ($productId) {
@@ -55,7 +57,6 @@ switch ($action) {
         $registerFormController = new RegisterFormControllers();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             if ($formType === 'login') {
                 $loginFormControllers->showLoginForm();
             } elseif ($formType === 'register') {
@@ -69,9 +70,9 @@ switch ($action) {
 
     case 'verify':
         $registerFormController = new RegisterFormControllers();
-        $registerFormController->verify(); // Appelle la méthode verify() pour valider l'email
+        $registerFormController->verify();
         break;
-    
+
     case 'password':
         $formResetPasswordControllers = new FormResetPasswordControllers();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -89,71 +90,57 @@ switch ($action) {
     case 'logout':
         $loginFormControllers = new LoginFormControllers();
         $loginFormControllers->logout();
-        break;    
+        break;
 
     case 'forgot-password':
-            $formForgotPasswordControllers = new FormForgotPasswordControllers();
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $formForgotPasswordControllers->getEmailByUser();
-            } else {
-                $formForgotPasswordControllers->FormForgotPassword();
-            }
+        $formForgotPasswordControllers = new FormForgotPasswordControllers();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $formForgotPasswordControllers->getEmailByUser();
+        } else {
+            $formForgotPasswordControllers->FormForgotPassword();
+        }
         break;
-        
+
     case 'admin':
         $adminDashboardControllers = new AdminDashboardControllers();
-        if (!$step){
+        if (!$step) {
             $adminDashboardControllers->showAdminBoard();
         } else {
             switch ($step) {
-            case 'gammes':
-                $adminGammesController = new AdminGammesControllers();
-                $gammesControllers = new GammesControllers();
+                case 'gammes':
+                    $adminGammesController = new AdminGammesControllers();
+                    $gammesControllers = new GammesControllers();
 
-                switch ($crud) {
-                    case 'create':
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                            $adminGammesController->handleFormSubmission();
-                        } else {
-                            $adminGammesController->showForm();
-                        }
-                        break;
-                    
-                    case 'edit':
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                            $adminGammesController->handleFormSubmission();
-                        } else {
-                            $adminGammesController->showForm($id);
-                        }
-                        break;
+                    switch ($crud) {
+                        case 'create':
+                        case 'edit':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $adminGammesController->handleFormSubmission();
+                            } else {
+                                $adminGammesController->showForm($id);
+                            }
+                            break;
 
-                    case 'delete':
-                        if ($id) {
-                            $adminGammesController->deleteGamme($id);
-                        } else {
-                            echo "ID manquant pour la suppression.";
-                        }
-                        break;
+                        case 'delete':
+                            if ($id) {
+                                $adminGammesController->deleteGamme($id);
+                            } else {
+                                echo "ID manquant pour la suppression.";
+                            }
+                            break;
 
-                    default:
-                        $gammesControllers->showAdminGammes();
-                        break;
-                }
-                break;
+                        default:
+                            $gammesControllers->showAdminGammes();
+                            break;
+                    }
+                    break;
 
                 case 'products':
                     $adminProduitsController = new AdminProductsControllers();
                     $produitsControllers = new AdminProductSearchController();
-        
+
                     switch ($crud) {
                         case 'create':
-                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                $adminProduitsController->handleFormSubmission();
-                            } else {
-                                $adminProduitsController->showForm();
-                            }
-                            break;
-        
                         case 'edit':
                             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $adminProduitsController->handleFormSubmission();
@@ -161,7 +148,7 @@ switch ($action) {
                                 $adminProduitsController->showForm($id);
                             }
                             break;
-        
+
                         case 'delete':
                             if ($id) {
                                 $adminProduitsController->deleteProduct($id);
@@ -172,18 +159,27 @@ switch ($action) {
 
                         case 'deleteImage':
                             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                                $adminProduitsController->deleteImage();  // Méthode pour supprimer une image
+                                $adminProduitsController->deleteImage();
                             } else {
                                 echo "Action non autorisée.";
                             }
                             break;
-        
+
                         default:
                             $produitsControllers->showProducts();
                             break;
                     }
                     break;
-        }
+
+                case 'aboutMe':
+                    $adminAboutMeControllers = new AdminAboutMeControllers();
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $adminAboutMeControllers->updateAboutMe();
+                    } else {
+                        $adminAboutMeControllers->showAboutMe();
+                    }
+                    break;
+            }
         }
         break;
 
@@ -194,8 +190,8 @@ switch ($action) {
         } else {
             $contactControllers->Contact();
         }
-        break;    
-        
+        break;
+
     case 'privacy':
         $privacyPolicyControllers = new PrivacyPolicyControllers();
         $privacyPolicyControllers->privacyPolicyController();
