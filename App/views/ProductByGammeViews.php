@@ -4,7 +4,7 @@ namespace Views;
 
 class ProductByGammeViews {
     public function displayProductByGammes($products) {
-        $gammeId = $_GET['id'];
+        $gammeId = $_GET['gammeId'];
         ?>
         <div class="products-container">
             <?php if (!empty($products)) : ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 19 sep. 2024 à 16:28
+-- Généré le : jeu. 26 sep. 2024 à 12:55
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -103,6 +103,16 @@ CREATE TABLE `colors` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Déchargement des données de la table `colors`
+--
+
+INSERT INTO `colors` (`id`, `name`) VALUES
+(3, 'noir'),
+(4, 'rouge'),
+(5, 'blanc'),
+(6, 'rose');
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +211,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_range_id`, `name`, `description`, `price`, `stock`, `height`, `weight`, `created_at`, `updated_at`) VALUES
-(1, 9, 'azezaeaz', 'ezaeazeazeaz', 20.00, 6, 20.00, 25.00, '2024-09-18 12:54:53', '2024-09-19 12:21:15'),
 (3, 9, 'zaeaz', 'eazeazeaze eazezaea azea ea eaze aeazzeae', 60.00, 4, 32.00, 45.00, '2024-09-19 14:50:16', '2024-09-19 14:50:16'),
 (4, 9, 'zaeaz', 'eazeazeaze eazezaea azea ea eaze aeazzeae', 60.00, 4, 32.00, 45.00, '2024-09-19 14:52:54', '2024-09-19 14:52:54'),
 (5, 10, 'azeaze', 'eaze eaz eeaze aeaaze', 20.00, 2, 15.00, 12.00, '2024-09-19 15:02:34', '2024-09-19 15:02:34');
@@ -241,25 +250,24 @@ INSERT INTO `products_range` (`id`, `name`, `description`, `image_path`) VALUES
 CREATE TABLE `product_images` (
   `id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
-  `image_path` varchar(255) DEFAULT NULL
+  `image_path` varchar(255) DEFAULT NULL,
+  `product_option_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `product_images`
 --
 
-INSERT INTO `product_images` (`id`, `product_id`, `image_path`) VALUES
-(8, 1, 'assets/images/products/alatreon.png'),
-(15, 3, 'assets/images/products/alatreon.png'),
-(16, 3, 'assets/images/products/amatsu.jpg'),
-(22, 4, 'assets/images/products/desktop-wallpaper-monster-hunter-world-iceborne-nargacuga.jpg'),
-(23, 4, 'assets/images/products/deviljho.png'),
-(24, 4, 'assets/images/products/rathian.png'),
-(25, 5, 'assets/images/products/240_F_448691502_K9eKcz0cc9zExrr9sjPtq9p4z3F2NySZ.jpg'),
-(26, 5, 'assets/images/products/hugo.jpg'),
-(27, 5, 'assets/images/products/nargacuga.png'),
-(28, 1, 'assets/images/products/amatsu.jpg'),
-(29, 1, 'assets/images/products/desktop-wallpaper-monster-hunter-world-iceborne-nargacuga.jpg');
+INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `product_option_id`) VALUES
+(25, 5, 'assets/images/products/240_F_448691502_K9eKcz0cc9zExrr9sjPtq9p4z3F2NySZ.jpg', 103),
+(26, 5, 'assets/images/products/hugo.jpg', 104),
+(27, 5, 'assets/images/products/nargacuga.png', 105),
+(33, 3, 'assets/images/products/alatreon.png', 82),
+(34, 3, 'assets/images/products/rathalos.png', 83),
+(35, 3, 'assets/images/products/rathian.png', 84),
+(36, 4, 'assets/images/products/alatreon.png', 80),
+(37, 4, 'assets/images/products/rajang.png', 80),
+(38, 4, 'assets/images/products/rathalos.png', 81);
 
 -- --------------------------------------------------------
 
@@ -273,6 +281,21 @@ CREATE TABLE `product_option` (
   `option_name` varchar(255) NOT NULL,
   `option_value` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `product_option`
+--
+
+INSERT INTO `product_option` (`id`, `product_id`, `option_name`, `option_value`) VALUES
+(80, 4, 'couleur', 'rouge'),
+(81, 4, 'couleur', 'rose'),
+(82, 3, 'couleur', 'noir'),
+(83, 3, 'couleur', 'rouge'),
+(84, 3, 'couleur', 'blanc'),
+(85, 3, 'couleur', 'rose'),
+(103, 5, 'couleur', 'noir'),
+(104, 5, 'couleur', 'rouge'),
+(105, 5, 'couleur', 'rose');
 
 -- --------------------------------------------------------
 
@@ -454,7 +477,8 @@ ALTER TABLE `products_range`
 --
 ALTER TABLE `product_images`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `product_option_id` (`product_option_id`);
 
 --
 -- Index pour la table `product_option`
@@ -531,7 +555,7 @@ ALTER TABLE `cart_detail`
 -- AUTO_INCREMENT pour la table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `delivery`
@@ -567,7 +591,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `products_range`
@@ -579,13 +603,13 @@ ALTER TABLE `products_range`
 -- AUTO_INCREMENT pour la table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT pour la table `product_option`
 --
 ALTER TABLE `product_option`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -685,7 +709,7 @@ ALTER TABLE `product_images`
 -- Contraintes pour la table `product_option`
 --
 ALTER TABLE `product_option`
-  ADD CONSTRAINT `fk_product_option` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `fk_product_option` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `users`

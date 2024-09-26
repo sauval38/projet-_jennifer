@@ -15,7 +15,7 @@ class ProductByGammeControllers {
     }
 
     public function showProductByGammes() {
-        $id = $_GET['id'];
+        $id = $_GET['gammeId'];
         if ($id) {
             $products = $this->productsModels->getProductByGammes($id);
             $this->productsViews->displayProductByGammes($products);
