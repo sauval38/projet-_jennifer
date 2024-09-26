@@ -13,6 +13,7 @@ use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use Controllers\ProductByGammeControllers;
+use Controllers\ProductPageControllers;
 use AdminControllers\AdminDashboardControllers;
 use AdminControllers\AdminGammesControllers;
 use AdminControllers\AdminProductsControllers;
@@ -37,7 +38,8 @@ switch ($action) {
     case 'gammes':
         if($gammeId) {
             if ($productId) {
-                echo 'prout';
+                $productPageControllers = new ProductPageControllers();
+                $productPageControllers->showProductPage();
             } else {
                 $productsByGammeControllers = new ProductByGammeControllers();
                 $productsByGammeControllers->showProductByGammes($id);
