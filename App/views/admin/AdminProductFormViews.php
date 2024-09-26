@@ -5,9 +5,9 @@ namespace AdminViews;
 class AdminProductFormViews {
     public function displayForm($product, $gammes, $images = []) {
         ?>
-        <div class="product-form-container">
-            <h1><?php echo $product['id'] ? 'Modifier le Produit' : 'Créer un Nouveau Produit'; ?></h1>
-            <form action="" method="post" enctype="multipart/form-data">
+        <h1><?php echo $product['id'] ? 'Modifier le Produit' : 'Créer un Nouveau Produit'; ?></h1>
+        <div id="product-form-container">
+            <form class="form" action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($product['id']); ?>">
 
                 <label for="product_range_id">Gamme:</label>

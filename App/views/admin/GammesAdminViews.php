@@ -5,7 +5,7 @@ namespace AdminViews;
 class GammesAdminViews {
     public function displayAdminGammes($gammes) {
         ?>
-        <div class="admin-gammes-container">
+        <div id="admin-gammes-container">
             <h1>Gestion des Gammes</h1>
             <?php
             if (isset($_SESSION['message'])) {

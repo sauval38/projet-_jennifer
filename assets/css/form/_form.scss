@@ -5,8 +5,8 @@ h1 {
     margin-bottom: 30px;
 }
 
-#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact {
-    @include flexbox(space-evenly,  flex-start);
+#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me {
+    @include flexbox(space-evenly, flex-start, column);
     border-radius: $border_radius; 
     padding: 50px;
     gap: 300px;
@@ -21,10 +21,6 @@ h1 {
             @include text-align(center);
             color: $color_minipink;
             margin-bottom: 20px;
-        }
-
-        p {
-            
         }
 
         label {
