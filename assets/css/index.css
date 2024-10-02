@@ -395,7 +395,6 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  flex-direction: column;
   border-radius: 16px;
   padding: 50px;
   gap: 300px;
