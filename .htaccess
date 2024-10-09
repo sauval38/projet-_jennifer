@@ -33,6 +33,9 @@ RewriteRule ^general-condition$ index.php?action=general-condition [L,QSA]
 # Redirection pour l'accès à 'contact'
 RewriteRule ^contact$ index.php?action=contact [L,QSA]
 
+# Redirection pour l'accès à 'panier'
+RewriteRule ^panier$ index.php?action=panier [L,QSA]
+
 # Redirection pour l'accès à 'admin'
 RewriteRule ^admin$ index.php?action=admin [L,QSA]
 

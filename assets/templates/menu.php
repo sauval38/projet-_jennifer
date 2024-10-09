@@ -26,7 +26,7 @@
             <?php else: ?>
                 <a href="login">Se connecter</a>
             <?php endif; ?>
-            <a class="cart-icon" href=""><i class="fas fa-shopping-cart"></i></a>
+            <a class="cart-icon" href="panier"><i class="fas fa-shopping-cart"></i></a>
         </div>
     </div>
 </nav>

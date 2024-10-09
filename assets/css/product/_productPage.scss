@@ -1,0 +1,105 @@
+.product-page-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .carousel-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 50%;
+
+        .carousel {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            margin-left: 10px; // Espacement entre le carrousel latéral et le carrousel principal
+
+            .carousel-wrapper {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+
+                .carousel-slide {
+                    padding: 20px;
+                    background-color: white;
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        display: block;
+                    }
+                }
+            }
+        }
+        .carousel-button {
+            font-size: 5rem; // Taille des symboles < et >
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            z-index: 1;
+    
+            &:hover {
+                color: #555; // Changer la couleur au survol
+            }
+    
+            &:focus {
+                outline: none;
+            }
+        }
+    
+        #prev-button {
+            left: 10px; // Positionner à gauche
+        }
+    
+        #next-button {
+            right: 10px; // Positionner à droite
+        }
+    }
+
+    .product-info {
+        width: 50%;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        .product-colors {
+            margin-top: 20px;
+
+            .color-options {
+                display: flex;
+                gap: 10px;
+
+                .color-square {
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid #000;
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+
+        .add-to-cart {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: #218838;
+            }
+        }
+    }
+}
