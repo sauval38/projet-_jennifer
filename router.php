@@ -14,6 +14,7 @@ use Controllers\PrivacyPolicyControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use Controllers\ProductByGammeControllers;
+use Controllers\CartController;
 use AdminControllers\AdminAboutMeControllers;
 use Controllers\ProductPageControllers;
 use AdminControllers\AdminDashboardControllers;
@@ -200,5 +201,28 @@ switch ($action) {
     case 'general-condition':
         $generalConditionsSaleControllers = new GeneralConditionsSaleControllers();
         $generalConditionsSaleControllers->generalConditionController();
-        break;    
+        break;
+        
+    case 'panier':
+        echo 'PANIER';
+        break;
+
+    case 'addToCart':
+        // Cas où l'action est 'addToCart' pour ajouter un produit au panier
+        $cartController = new CartController();
+        $cartController->addToCart();
+        break;
+
+    case 'adjustQuantity':
+        // Cas où l'action est 'adjustQuantity' pour ajuster la quantité d'un produit dans le panier
+        $cartController = new CartController();
+        $cartController->adjustQuantity();
+        break;
+
+    case 'removeFromCart':
+        // Cas où l'action est 'removeFromCart' pour retirer un produit du panier
+        $cartController = new CartController();
+        $cartController->removeFromCart();
+        break;
+
 }

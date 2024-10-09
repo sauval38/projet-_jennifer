@@ -27,12 +27,18 @@ class ProductPageViews {
 
             <!-- Fiche produit à droite -->
             <div class="product-info">
-                <h1><?php echo htmlspecialchars($product['name']); ?></h1>
+                <h1 data-product-id="<?php echo htmlspecialchars($product['id']); ?>"><?php echo htmlspecialchars($product['name']); ?></h1>
                 <p><?php echo htmlspecialchars($product['description']); ?></p>
                 <p><strong>Prix :</strong> <?php echo htmlspecialchars($product['price']); ?> €</p>
                 <p><strong>Taille :</strong> <?php echo htmlspecialchars($product['height']); ?> cm</p>
                 <p><strong>Stock :</strong> <?php echo htmlspecialchars($product['stock']); ?> pièces disponibles</p>
                 <p><strong>Poids :</strong> <?php echo htmlspecialchars($product['weight']); ?> kg</p>
+
+                <!-- Champ de sélection de la quantité -->
+                <div class="product-quantity">
+                    <label for="quantity"><strong>Quantité :</strong></label>
+                    <input type="number" id="quantity" class="qte" name="quantity" value="1" min="1" max="<?php echo htmlspecialchars($product['stock']); ?>">
+                </div>
 
                 <!-- Couleurs disponibles pour le produit -->
                 <div class="product-colors">
@@ -41,21 +47,21 @@ class ProductPageViews {
                         <?php foreach ($productOptions as $option) : ?>
                             <?php if ($option['option_name'] === 'couleur') : ?>
                                 <div class="color-square" 
-                                     style="background-color: <?php echo htmlspecialchars($option['option_value']); ?>;" 
-                                     data-color-id="<?php echo $option['id']; ?>"></div>
+                                    style="background-color: <?php echo htmlspecialchars($option['option_value']); ?>;" 
+                                    data-color-id="<?php echo $option['id']; ?>"></div>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
 
                 <!-- Lien Ajouter au panier -->
-                <div class="add-to-cart">
-                    <a href="cart/add/<?php echo $product['id']; ?>" class="btn btn-primary">Ajouter au panier</a>
-                </div>
+                <button type="button" class="add-to-cart">Ajouter au Panier</button>
             </div>
+
         </div>
 
         <script src="./assets/js/productPage.js"></script>
+        <script src="./assets/js/addToCart.js"></script>
         <?php
     }
 }
