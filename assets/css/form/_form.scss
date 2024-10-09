@@ -6,7 +6,7 @@ h1 {
 }
 
 #form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me {
-    @include flexbox(space-evenly, flex-start, column);
+    @include flexbox(space-evenly, flex-start, false);
     border-radius: $border_radius; 
     padding: 50px;
     gap: 300px;
