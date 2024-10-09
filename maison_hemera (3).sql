@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 26 sep. 2024 à 12:55
+-- Généré le : mer. 09 oct. 2024 à 15:41
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -77,6 +77,13 @@ CREATE TABLE `cart` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Déchargement des données de la table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `total_amount`, `created_at`, `updated_at`) VALUES
+(2, 5, 1500.00, '2024-10-09 14:40:35', '2024-10-09 15:33:48');
+
 -- --------------------------------------------------------
 
 --
@@ -92,7 +99,97 @@ CREATE TABLE `cart_detail` (
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Déchargement des données de la table `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `product_option_id`, `quantity`, `price`) VALUES
+(2, 2, 3, 117, 10, 60.00),
+(3, 2, 3, 119, 11, 60.00),
+(4, 2, 3, 118, 2, 60.00),
+(5, 2, 3, 116, 2, 60.00);
+
+--
+-- Déclencheurs `cart_detail`
+--
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount` AFTER INSERT ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = NEW.cart_id
+    )
+    WHERE id = NEW.cart_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount_delete` AFTER DELETE ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = OLD.cart_id
+    )
+    WHERE id = OLD.cart_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount_update` AFTER UPDATE ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = NEW.cart_id
+    )
+    WHERE id = NEW.cart_id;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
+--
+-- Déclencheurs `user_cart_detail`
+--
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount` AFTER INSERT ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = NEW.cart_id
+    )
+    WHERE id = NEW.cart_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount_delete` AFTER DELETE ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = OLD.cart_id
+    )
+    WHERE id = OLD.cart_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `trg_update_user_cart_amount_update` AFTER UPDATE ON `cart_detail` FOR EACH ROW BEGIN
+    UPDATE cart
+    SET total_amount = (
+        SELECT COALESCE(SUM(price * quantity), 0)
+        FROM cart_detail
+        WHERE cart_id = NEW.cart_id
+    )
+    WHERE id = NEW.cart_id;
+END
+$$
+DELIMITER ;
+
 
 --
 -- Structure de la table `colors`
@@ -112,6 +209,29 @@ INSERT INTO `colors` (`id`, `name`) VALUES
 (4, 'rouge'),
 (5, 'blanc'),
 (6, 'rose');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `contact`
+--
+
+INSERT INTO `contact` (`id`, `lastname`, `email`, `subject`, `message`, `created_at`) VALUES
+(1, 'Blasco', 'jenniferblasco230389@hotmail.com', 'qvrevq', 'vzvzq', '2024-10-03 20:17:18'),
+(2, 'ace', 'acw@acw.fr', 'albert', 'charles', '2024-10-09 15:39:11');
 
 -- --------------------------------------------------------
 
@@ -262,12 +382,13 @@ INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `product_option_
 (25, 5, 'assets/images/products/240_F_448691502_K9eKcz0cc9zExrr9sjPtq9p4z3F2NySZ.jpg', 103),
 (26, 5, 'assets/images/products/hugo.jpg', 104),
 (27, 5, 'assets/images/products/nargacuga.png', 105),
-(33, 3, 'assets/images/products/alatreon.png', 82),
-(34, 3, 'assets/images/products/rathalos.png', 83),
-(35, 3, 'assets/images/products/rathian.png', 84),
+(33, 3, 'assets/images/products/alatreon.png', 116),
+(34, 3, 'assets/images/products/rathalos.png', 117),
+(35, 3, 'assets/images/products/rathian.png', 118),
 (36, 4, 'assets/images/products/alatreon.png', 80),
 (37, 4, 'assets/images/products/rajang.png', 80),
-(38, 4, 'assets/images/products/rathalos.png', 81);
+(38, 4, 'assets/images/products/rathalos.png', 81),
+(44, 3, 'assets/images/products/rajang.png', 119);
 
 -- --------------------------------------------------------
 
@@ -289,13 +410,13 @@ CREATE TABLE `product_option` (
 INSERT INTO `product_option` (`id`, `product_id`, `option_name`, `option_value`) VALUES
 (80, 4, 'couleur', 'rouge'),
 (81, 4, 'couleur', 'rose'),
-(82, 3, 'couleur', 'noir'),
-(83, 3, 'couleur', 'rouge'),
-(84, 3, 'couleur', 'blanc'),
-(85, 3, 'couleur', 'rose'),
 (103, 5, 'couleur', 'noir'),
 (104, 5, 'couleur', 'rouge'),
-(105, 5, 'couleur', 'rose');
+(105, 5, 'couleur', 'rose'),
+(116, 3, 'couleur', 'noir'),
+(117, 3, 'couleur', 'rouge'),
+(118, 3, 'couleur', 'blanc'),
+(119, 3, 'couleur', 'rose');
 
 -- --------------------------------------------------------
 
@@ -422,6 +543,12 @@ ALTER TABLE `colors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `delivery`
 --
 ALTER TABLE `delivery`
@@ -543,19 +670,25 @@ ALTER TABLE `archived_order`
 -- AUTO_INCREMENT pour la table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `colors`
 --
 ALTER TABLE `colors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `delivery`
@@ -603,13 +736,13 @@ ALTER TABLE `products_range`
 -- AUTO_INCREMENT pour la table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT pour la table `product_option`
 --
 ALTER TABLE `product_option`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
