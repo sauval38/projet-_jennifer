@@ -14,7 +14,7 @@ class ProductByGammeModels {
 
     public function getProductByGammes($id) {
         $queryGammes = "
-            SELECT p.*, pi.image_path
+            SELECT p.id, p.*, MIN(pi.image_path) AS image_path
             FROM products p
             LEFT JOIN product_images pi ON p.id = pi.product_id
             WHERE p.product_range_id = ?
