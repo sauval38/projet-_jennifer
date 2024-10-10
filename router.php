@@ -21,6 +21,7 @@ use AdminControllers\AdminDashboardControllers;
 use AdminControllers\AdminGammesControllers;
 use AdminControllers\AdminProductsControllers;
 use AdminControllers\AdminProductSearchController;
+use Controllers\CartShowController;
 
 $pdo = new Database;
 
@@ -31,6 +32,7 @@ $id = $_REQUEST['id'] ?? null;
 $gammeId = $_REQUEST['gammeId'] ?? null;
 $productId = $_REQUEST['productId'] ?? null;
 $formType = $_POST['form_type'] ?? '';
+$userId = $_SESSION['id'] ?? null;
 
 switch ($action) {
     default:
@@ -204,8 +206,42 @@ switch ($action) {
         break;
         
     case 'panier':
-        echo 'PANIER';
+        if ($userId) {
+            $cartShowController = new CartShowController();
+            $cartShowController->displayCart($userId);
+        } else {
+            echo '<h1>Veuillez vous <a href="login">connecter</a> pour acceder à votre panier</h1>';
+        }
+        
         break;
+    
+    case 'update-quantity':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            error_log('Updating quantity'); // Log pour voir si cette partie du code est atteinte
+            $data = json_decode(file_get_contents('php://input'), true);
+            $cartDetailId = $data['cartDetailId'];
+            $quantity = $data['quantity'];
+
+            $cartShowController = new CartShowController();
+            $cartShowController->updateQuantity($cartDetailId, $quantity);
+        } else {
+            error_log('Invalid request method for update-quantity'); // Log si la méthode n'est pas POST
+        }
+        break;
+
+    case 'remove-item':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            error_log('Removing item'); // Log pour voir si cette partie du code est atteinte
+            $data = json_decode(file_get_contents('php://input'), true);
+            $cartDetailId = $data['cartDetailId'];
+
+            $cartShowController = new CartShowController();
+            $cartShowController->removeItem($cartDetailId);
+        } else {
+            error_log('Invalid request method for remove-item'); // Log si la méthode n'est pas POST
+        }
+        break;
+
 
     case 'addToCart':
         // Cas où l'action est 'addToCart' pour ajouter un produit au panier
