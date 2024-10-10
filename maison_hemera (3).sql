@@ -149,47 +149,6 @@ END
 $$
 DELIMITER ;
 
--- --------------------------------------------------------
---
--- Déclencheurs `user_cart_detail`
---
-DELIMITER $$
-CREATE TRIGGER `trg_update_user_cart_amount` AFTER INSERT ON `cart_detail` FOR EACH ROW BEGIN
-    UPDATE cart
-    SET total_amount = (
-        SELECT COALESCE(SUM(price * quantity), 0)
-        FROM cart_detail
-        WHERE cart_id = NEW.cart_id
-    )
-    WHERE id = NEW.cart_id;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `trg_update_user_cart_amount_delete` AFTER DELETE ON `cart_detail` FOR EACH ROW BEGIN
-    UPDATE cart
-    SET total_amount = (
-        SELECT COALESCE(SUM(price * quantity), 0)
-        FROM cart_detail
-        WHERE cart_id = OLD.cart_id
-    )
-    WHERE id = OLD.cart_id;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `trg_update_user_cart_amount_update` AFTER UPDATE ON `cart_detail` FOR EACH ROW BEGIN
-    UPDATE cart
-    SET total_amount = (
-        SELECT COALESCE(SUM(price * quantity), 0)
-        FROM cart_detail
-        WHERE cart_id = NEW.cart_id
-    )
-    WHERE id = NEW.cart_id;
-END
-$$
-DELIMITER ;
-
 
 --
 -- Structure de la table `colors`
