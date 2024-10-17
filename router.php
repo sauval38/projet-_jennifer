@@ -22,6 +22,7 @@ use AdminControllers\AdminGammesControllers;
 use AdminControllers\AdminProductsControllers;
 use AdminControllers\AdminProductSearchController;
 use Controllers\CartShowController;
+use Controllers\AddressCartController;
 
 $pdo = new Database;
 
@@ -184,6 +185,61 @@ switch ($action) {
                     break;
             }
         }
+        break;
+
+    case 'commande':
+    if (!isset($_SESSION['id'])) {
+        header('Location: ../login');
+        exit();
+    } else {
+        $step = $_REQUEST['step'] ?? null;
+        switch ($step) {
+            case 'adresse':
+                $addressCartController = new AddressCartController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if ($addressCartController->AddressSave()) {
+                        header("Location: ./livraison");
+                        exit();
+                    } else {
+                        $addressCartController->AddressForm();
+                    }
+                } else {
+                    $addressCartController->AddressForm();
+                }
+                break;
+            case 'livraison':
+                $deliveryCartController = new \Controllers\DeliveryCart();
+                $deliveryCartController->DeliveryChoice();
+                break;
+            case 'recap':
+                $recapOrder = new \Controllers\RecapOrder();
+                $cart_id = 16;
+                $userDetails = $_SESSION['user'];
+                $recapOrder->RecapPlz($cart_id, $userDetails);
+                break; 
+            case 'paiement':
+                $paymentController = new \Controllers\PaymentController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if ($paymentController->processPayment($_POST['nom'], $_POST['montant'])) {
+                        // Rediriger ou afficher un message de succès
+                        echo "Paiement réussi !";
+                    } else {
+                        $paymentController->showPaymentForm($_POST['userName'], $_POST['totalAmount']);
+                    }
+                } else {
+                    $userName = $_POST['userName'] ?? null;
+                    $totalAmount = $_POST['totalAmount'] ?? null;
+                    $paymentController->showPaymentForm($userName, $totalAmount);
+                }
+                break;
+            case 'validation':
+                echo 'Validation de la commande';
+                break;
+            default:
+                echo 'Étape inconnue.';
+                break;
+        }
+    }
         break;
 
     case 'contact':

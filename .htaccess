@@ -68,3 +68,21 @@ RewriteRule ^admin/products/deleteImage/([0-9]+)/product/([0-9]+)$ index.php?act
 
 # Redirection pour l'accès à 'admin/aboutMe'
 RewriteRule ^admin/aboutMe$ index.php?action=admin&step=aboutMe
+
+# Redirection pour l'accès à 'commande'
+RewriteRule ^commande$ index.php?action=commande [L,QSA]
+
+# Redirection pour l'accès à 'commande/adresse'
+RewriteRule ^commande/adresse$ index.php?action=commande&step=adresse [L,QSA]
+
+# Redirection pour l'accès à 'commande/livraison'
+RewriteRule ^commande/livraison$ index.php?action=commande&step=livraison [L,QSA]
+
+# Redirection pour l'accès à 'commande/recap'
+RewriteRule ^commande/recap$ index.php?action=commande&step=recap [L,QSA]
+
+# Redirection pour l'accès à 'commande/paiement'
+RewriteRule ^commande/paiement$ index.php?action=commande&step=paiement [L,QSA]
+
+# Redirection pour l'accès à 'commande/validation'
+RewriteRule ^commande/paiement$ index.php?action=commande&step=validation [L,QSA]
