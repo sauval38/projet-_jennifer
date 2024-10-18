@@ -13,13 +13,13 @@ class AddressCartModel {
     public function fetchAddress() {
         $userId = $_SESSION['id'];
         try {
-            $pdo = $this->db->getConnection()->prepare("SELECT billing_address, delivery_address, city, postal_code FROM address WHERE user_id = ?");
+            $pdo = $this->db->getConnection()->prepare("SELECT address_1, address_2, postal_code, city, country FROM delivery_address WHERE user_id = ?");
             $pdo->execute([$userId]);
-            $address = $pdo->fetch(\PDO::FETCH_ASSOC);  
+            $address = $pdo->fetch(\PDO::FETCH_ASSOC);
 
             // Stocker l'adresse dans la session
             if ($address) {
-                $_SESSION['user_address'] = $address;
+                $_SESSION['delivery_address'] = $address;
             }
 
             return $address;
@@ -29,9 +29,23 @@ class AddressCartModel {
         }
     }
 
+    public function fetchName() {
+        $userId = $_SESSION['id'];
+        try {
+            $pdo = $this->db->getConnection()->prepare("SELECT firstname, lastname FROM users WHERE id = ?");
+            $pdo->execute([$userId]);
+            $names = $pdo->fetch(\PDO::FETCH_ASSOC);
+
+            return $names;
+        } catch (\PDOException $e) {
+            echo "Erreur lors de la récupération des noms : " . $e->getMessage();
+            return false;
+        }
+    }
+
     public function addressExists($userId) {
         try {
-            $pdo = $this->db->getConnection()->prepare("SELECT COUNT(*) FROM address WHERE user_id = ?");
+            $pdo = $this->db->getConnection()->prepare("SELECT COUNT(*) FROM delivery_address WHERE user_id = ?");
             $pdo->execute([$userId]);
             return $pdo->fetchColumn() > 0;
         } catch (\PDOException $e) {
@@ -42,34 +56,46 @@ class AddressCartModel {
 
     public function saveAddress() {
         $userId = $_SESSION['id'];
-        $billing_address = $_POST['billing_address'] ?? ''; 
-        $delivery_address = $_POST['delivery_address'] ?? ''; 
-        $city = $_POST['city'] ?? '';
+        $firstname = $_POST['firstname'] ?? ''; 
+        $lastname = $_POST['lastname'] ?? ''; 
+        $addressOne = $_POST['address_1'] ?? ''; 
+        $addressTwo = $_POST['address_2'] ?? ''; 
         $postal_code = $_POST['postal_code'] ?? '';
+        $city = $_POST['city'] ?? '';
+        $country = $_POST['country'] ?? '';
         
         // Validation des données
-        if (empty($billing_address) || empty($delivery_address) || empty($city) || empty($postal_code)) {
+        if (empty($firstname) || empty($lastname) || empty($addressOne) || empty($postal_code) || empty($city) || empty($country)) {
             echo "<h1>Veuillez remplir tous les champs obligatoires.</h1>";
             return false;
         }
 
         try {
             if ($this->addressExists($userId)) {
-                $pdo = $this->db->getConnection()->prepare("UPDATE address SET billing_address = ?, delivery_address = ?, city = ?, postal_code = ? WHERE user_id = ?");
-                $pdo->execute([$billing_address, $delivery_address, $city, $postal_code, $userId]);
+                $pdo = $this->db->getConnection()->prepare("UPDATE delivery_address SET address_1 = ?, address_2 = ?, postal_code = ?, city = ?, country = ? WHERE user_id = ?");
+                $pdo->execute([$addressOne, $addressTwo, $postal_code, $city, $country, $userId]);
+                
+                $pdo = $this->db->getConnection()->prepare("UPDATE users SET firstname = ?, lastname = ? WHERE id = ?");
+                $pdo->execute([$firstname, $lastname, $userId]);
                 echo "<h1>Adresse mise à jour</h1>";
             } else {
-                $pdo = $this->db->getConnection()->prepare("INSERT INTO address (user_id, billing_address, delivery_address, city, postal_code) VALUES (?, ?, ?, ?, ?)");
-                $pdo->execute([$userId, $billing_address, $delivery_address, $city, $postal_code]);
+                $pdo = $this->db->getConnection()->prepare("INSERT INTO delivery_address (user_id, address_1, address_2, postal_code, city, country) VALUES (?, ?, ?, ?, ?, ?)");
+                $pdo->execute([$userId, $addressOne, $addressTwo, $postal_code, $city, $country]);
+
+                $pdo = $this->db->getConnection()->prepare("UPDATE users SET firstname = ?, lastname = ? WHERE id = ?");
+                $pdo->execute([$firstname, $lastname, $userId]);
                 echo "<h1>Adresse sauvegardée</h1>";
             }
 
             // Mettre à jour la session avec la nouvelle adresse
-            $_SESSION['user_address'] = [
-                'billing_address' => $billing_address,
-                'delivery_address' => $delivery_address,
+            $_SESSION['delivery_address'] = [
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'address_1' => $addressOne,
+                'address_2' => $addressTwo,
+                'postal_code' => $postal_code,
                 'city' => $city,
-                'postal_code' => $postal_code
+                'country' => $country
             ];
             return true; // Sauvegarde réussie
         } catch (\PDOException $e) {

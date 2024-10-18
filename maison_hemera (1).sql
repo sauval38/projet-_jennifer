@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 09 oct. 2024 à 15:41
+-- Généré le : ven. 18 oct. 2024 à 18:41
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -38,21 +38,6 @@ CREATE TABLE `about_me` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `address`
---
-
-CREATE TABLE `address` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `billing_address` varchar(255) NOT NULL,
-  `delivery_address` varchar(255) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `postal_code` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `archived_order`
 --
 
@@ -61,6 +46,22 @@ CREATE TABLE `archived_order` (
   `order_id` int(11) DEFAULT NULL,
   `order_date` datetime NOT NULL,
   `archive_date` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `billing_address`
+--
+
+CREATE TABLE `billing_address` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `address_1` varchar(255) NOT NULL,
+  `address_2` varchar(255) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `postal_code` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -82,7 +83,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `total_amount`, `created_at`, `updated_at`) VALUES
-(2, 5, 1500.00, '2024-10-09 14:40:35', '2024-10-09 15:33:48');
+(2, 5, 1620.00, '2024-10-09 14:40:35', '2024-10-18 14:00:27');
 
 -- --------------------------------------------------------
 
@@ -105,9 +106,9 @@ CREATE TABLE `cart_detail` (
 
 INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `product_option_id`, `quantity`, `price`) VALUES
 (2, 2, 3, 117, 10, 60.00),
-(3, 2, 3, 119, 11, 60.00),
+(3, 2, 3, 119, 14, 60.00),
 (4, 2, 3, 118, 2, 60.00),
-(5, 2, 3, 116, 2, 60.00);
+(6, 2, 3, 116, 1, 60.00);
 
 --
 -- Déclencheurs `cart_detail`
@@ -149,6 +150,7 @@ END
 $$
 DELIMITER ;
 
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `colors`
@@ -211,6 +213,29 @@ CREATE TABLE `delivery` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `delivery_address`
+--
+
+CREATE TABLE `delivery_address` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `address_1` varchar(255) NOT NULL,
+  `address_2` varchar(255) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `postal_code` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `delivery_address`
+--
+
+INSERT INTO `delivery_address` (`id`, `user_id`, `address_1`, `address_2`, `country`, `city`, `postal_code`) VALUES
+(1, 5, '78 rue de la fontaine', 'les trous', 'Suisse', 'Lyon', '65870');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `delivery_option`
 --
 
@@ -220,6 +245,15 @@ CREATE TABLE `delivery_option` (
   `description` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `delivery_option`
+--
+
+INSERT INTO `delivery_option` (`id`, `name`, `description`, `price`) VALUES
+(1, 'Standard', 'Livraison en 3 à 5 jours ouvrés', 4.99),
+(2, 'Express', 'Livraison en 24 à 48 heures', 9.99),
+(3, 'Retrait en magasin', 'Retirez votre commande dans le magasin le plus proche', 0.00);
 
 -- --------------------------------------------------------
 
@@ -259,12 +293,18 @@ CREATE TABLE `order_detail` (
 
 CREATE TABLE `payment_methods` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
   `method_name` varchar(255) NOT NULL,
-  `method_details` text DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `method_details` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `payment_methods`
+--
+
+INSERT INTO `payment_methods` (`id`, `method_name`, `method_details`) VALUES
+(1, 'Carte Bancaire', 'Visa, MasterCard, American Express acceptés'),
+(2, 'PayPal', 'Payez avec votre compte PayPal en toute sécurité'),
+(3, 'Virement Bancaire', 'Effectuez un virement directement depuis votre banque');
 
 -- --------------------------------------------------------
 
@@ -438,7 +478,7 @@ INSERT INTO `users` (`id`, `role_id`, `username`, `lastname`, `firstname`, `emai
 (1, 1, 'user', NULL, NULL, 'user@user.fr', '$2y$10$w1E/iATu59hK/3JD60wZdevXAUkURjwgA7yyqlYm6U5TiEhUQBk4u', NULL, 0, '', '2024-09-04 15:02:17', '2024-09-05 11:56:27'),
 (3, 2, 'charles', NULL, NULL, 'boubou601@live.fr', '$2y$10$CQQ6yhrG/g04016ZU.OjtOoTYSiHHH6LkCdMr9WJ3Ui5xO.NPjFVS', NULL, 0, 'f42bd435a550cee45ac8869ef8cb097424a21a4a7186fbb96f7f6b8b8657fbeb72ce2cf35c0244fccf5ef374b8c9f8828034', '2024-09-04 15:05:32', '2024-09-06 14:50:13'),
 (4, 2, 'jennifer', NULL, NULL, 'jenniferblasco230389@hotmail.com', '$2y$10$EDzkqVXLGVGBnhDHjsZRXerEORyi9iIUVSBynySHt4XVWjERT0LsC', NULL, 0, '', '2024-09-04 15:46:42', '2024-09-05 11:56:34'),
-(5, 2, 'ace', NULL, NULL, 'ace@ace.fr', '$2y$10$qeeCpnaeX3L4PQlHc5t.KuQor.VFZPWRFsQ1Q.q6rfF/wC6x8U3V.', NULL, 0, NULL, '2024-09-05 15:11:41', '2024-09-09 12:24:53'),
+(5, 2, 'ace', 'GAYARD', 'Louis', 'ace@ace.fr', '$2y$10$qeeCpnaeX3L4PQlHc5t.KuQor.VFZPWRFsQ1Q.q6rfF/wC6x8U3V.', NULL, 0, NULL, '2024-09-05 15:11:41', '2024-10-18 14:46:00'),
 (11, 1, 'lyon', NULL, NULL, 'lyon@hotmail.de', '$2y$10$ShmgviURUXd5iwD6zTuym.FyaxItdbdybGO9mwMFjxEjYJ8EqWh9e', NULL, 1, NULL, '2024-09-06 15:09:29', '2024-09-06 15:09:46');
 
 -- --------------------------------------------------------
@@ -466,18 +506,18 @@ ALTER TABLE `about_me`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `address`
---
-ALTER TABLE `address`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_address` (`user_id`);
-
---
 -- Index pour la table `archived_order`
 --
 ALTER TABLE `archived_order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_order_archived` (`order_id`);
+
+--
+-- Index pour la table `billing_address`
+--
+ALTER TABLE `billing_address`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_billing_address` (`user_id`);
 
 --
 -- Index pour la table `cart`
@@ -516,6 +556,13 @@ ALTER TABLE `delivery`
   ADD KEY `fk_delivery_option` (`delivery_option_id`);
 
 --
+-- Index pour la table `delivery_address`
+--
+ALTER TABLE `delivery_address`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_delivery_address` (`user_id`);
+
+--
 -- Index pour la table `delivery_option`
 --
 ALTER TABLE `delivery_option`
@@ -542,8 +589,7 @@ ALTER TABLE `order_detail`
 -- Index pour la table `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_payment` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `products`
@@ -614,15 +660,15 @@ ALTER TABLE `about_me`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `address`
---
-ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `archived_order`
 --
 ALTER TABLE `archived_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `billing_address`
+--
+ALTER TABLE `billing_address`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -635,7 +681,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT pour la table `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `colors`
@@ -656,10 +702,16 @@ ALTER TABLE `delivery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `delivery_address`
+--
+ALTER TABLE `delivery_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `delivery_option`
 --
 ALTER TABLE `delivery_option`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `order`
@@ -677,7 +729,7 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT pour la table `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `products`
@@ -732,16 +784,16 @@ ALTER TABLE `wish_list`
 --
 
 --
--- Contraintes pour la table `address`
---
-ALTER TABLE `address`
-  ADD CONSTRAINT `fk_user_address` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
 -- Contraintes pour la table `archived_order`
 --
 ALTER TABLE `archived_order`
   ADD CONSTRAINT `fk_order_archived` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
+
+--
+-- Contraintes pour la table `billing_address`
+--
+ALTER TABLE `billing_address`
+  ADD CONSTRAINT `fk_user_billing_address` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `cart`
@@ -765,6 +817,12 @@ ALTER TABLE `delivery`
   ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --
+-- Contraintes pour la table `delivery_address`
+--
+ALTER TABLE `delivery_address`
+  ADD CONSTRAINT `fk_user_delivery_address` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Contraintes pour la table `order`
 --
 ALTER TABLE `order`
@@ -778,12 +836,6 @@ ALTER TABLE `order_detail`
   ADD CONSTRAINT `fk_order_order_detail` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
   ADD CONSTRAINT `fk_product_option_order_detail` FOREIGN KEY (`product_option_id`) REFERENCES `product_option` (`id`),
   ADD CONSTRAINT `fk_product_order_detail` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
-
---
--- Contraintes pour la table `payment_methods`
---
-ALTER TABLE `payment_methods`
-  ADD CONSTRAINT `fk_user_payment` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `products`

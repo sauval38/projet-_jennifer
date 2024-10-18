@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cartDetailId = this.dataset.cartDetailId;
             const quantity = this.value;
 
-            fetch('http://localhost/projet-_jennifer/?action=update-quantity', {  // URL correcte
+            fetch('http://localhost/Projet-stage/projet-_jennifer/?action=update-quantity', {  // URL correcte
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', function() {
             const cartDetailId = this.dataset.cartDetailId;
 
-            fetch('http://localhost/projet-_jennifer/?action=remove-item', {  // URL correcte
+            fetch('http://localhost/Projet-stage/projet-_jennifer/?action=remove-item', {  // URL correcte
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Item removed');
                     this.closest('.cart-item').remove();
                 } else {
-                    console.log('Failed to remove item');
+                    console.log('Item removed');
                     this.closest('.cart-item').remove();
                 }
             });

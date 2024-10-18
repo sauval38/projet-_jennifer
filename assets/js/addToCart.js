@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Envoie une requête POST au serveur
-                const response = await fetch('http://localhost/projet-_jennifer/?action=addToCart', {
+                const response = await fetch('http://localhost/Projet-stage/projet-_jennifer/?action=addToCart', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json', // Spécifie que les données envoyées sont au format JSON

@@ -23,6 +23,10 @@ use AdminControllers\AdminProductsControllers;
 use AdminControllers\AdminProductSearchController;
 use Controllers\CartShowController;
 use Controllers\AddressCartController;
+use Controllers\DeliveryCartController;
+use Controllers\RecapOrderController;
+use Controllers\PaymentController;
+use Controllers\ValidationController;
 
 $pdo = new Database;
 
@@ -208,35 +212,28 @@ switch ($action) {
                 }
                 break;
             case 'livraison':
-                $deliveryCartController = new \Controllers\DeliveryCart();
+                $deliveryCartController = new DeliveryCartController();
                 $deliveryCartController->DeliveryChoice();
                 break;
             case 'recap':
-                $recapOrder = new \Controllers\RecapOrder();
-                $cart_id = 16;
-                $userDetails = $_SESSION['user'];
-                $recapOrder->RecapPlz($cart_id, $userDetails);
-                break; 
+                $recapOrder = new RecapOrderController();
+                $cart_id = $_SESSION['cart_id'];;
+                $recapOrder->RecapPlz($cart_id);
+                break;
             case 'paiement':
-                $paymentController = new \Controllers\PaymentController();
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    if ($paymentController->processPayment($_POST['nom'], $_POST['montant'])) {
-                        // Rediriger ou afficher un message de succès
-                        echo "Paiement réussi !";
-                    } else {
-                        $paymentController->showPaymentForm($_POST['userName'], $_POST['totalAmount']);
-                    }
-                } else {
-                    $userName = $_POST['userName'] ?? null;
-                    $totalAmount = $_POST['totalAmount'] ?? null;
-                    $paymentController->showPaymentForm($userName, $totalAmount);
-                }
+                // Etape 'paiement'
+                $paymentController = new PaymentController();
+                $paymentController->PaymentChoice();
+                break;
+            case 'check-validation':
+                // Etape 'check-validation'
+                $validationController = new ValidationController();
+                $validationController->orderCheck();
                 break;
             case 'validation':
-                echo 'Validation de la commande';
-                break;
-            default:
-                echo 'Étape inconnue.';
+                // Etape 'validation'
+                $validationController = new ValidationController();
+                $validationController->orderValidate();
                 break;
         }
     }

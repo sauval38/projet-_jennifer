@@ -15,7 +15,8 @@ class AddressCartController {
 
     public function AddressForm() {
         $address = $this->addressModel->fetchAddress();
-        $this->addressView->initForm($address);
+        $user = $this->addressModel->fetchName();
+        $this->addressView->initForm($user, $address);
     }
 
     public function AddressSave() {

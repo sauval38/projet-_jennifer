@@ -25,7 +25,7 @@ class CartShowView {
                             <label for="quantity">Quantity:</label>
                             <select class="quantity-select" data-cart-detail-id="<?= $item['cart_detail_id']; ?>">
                                 <?php
-                                for ($i = 1; $i <= 10; $i++) {
+                                for ($i = 1; $i <= 99; $i++) {
                                     $selected = ($i == $item['quantity']) ? 'selected' : '';
                                     ?>
                                     <option value="<?= $i; ?>" <?= $selected; ?>><?= $i; ?></option>
@@ -40,6 +40,7 @@ class CartShowView {
                 }
             }
             ?>
+            <a href="commande/adresse">COMMANDER</a>
         </div>
         <script src="./assets/js/cartUpdate.js"></script>
         <?php
