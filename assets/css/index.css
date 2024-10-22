@@ -17,7 +17,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: auto;
 }
 
 h1 {
@@ -43,14 +42,14 @@ h4 {
 p {
   font-family: "Carlito", sans-serif;
   color: rgb(0, 0, 0);
-  font-size: 16px;
+  font-size: 1.2rem;
 }
 
 button {
   background-color: rgb(81, 68, 64);
   color: rgb(255, 255, 255);
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 1.2rem;
   border: 1px solid rgb(81, 68, 64);
   border: none;
   cursor: pointer;
@@ -80,8 +79,7 @@ button:hover {
 
 select {
   background-color: rgb(247, 214, 224);
-  border-radius: 50px;
-  font-size: 16px;
+  font-size: 1.2rem;
   color: rgb(0, 0, 0);
   border: 1px solid rgb(81, 68, 64);
   padding: 10px;
@@ -121,7 +119,7 @@ select option {
 #menu .menu-items a {
   text-decoration: none;
   color: rgb(237, 142, 156);
-  font-size: 16px;
+  font-size: 1.2rem;
   font-family: "Cinzel Decorative", sans-serif;
   padding: 10px 20px;
 }
@@ -161,6 +159,7 @@ h1 {
   flex-direction: column;
   text-align: center;
   background-color: rgb(253, 247, 242);
+  border-radius: 16px;
   height: auto;
   width: 200px;
   padding: 20px;
@@ -181,13 +180,13 @@ h1 {
   margin-right: auto;
   max-width: 600px;
   padding: 1rem;
-  border: 1;
   margin-top: 30px;
   margin: 10px 0;
 }
 .carousel-container .carousel {
   display: flex;
   align-items: center;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   flex: 1;
@@ -226,7 +225,6 @@ h1 {
   margin-right: auto;
   max-width: 600px;
   padding: 1rem;
-  border: 1;
   margin-top: 30px;
   margin: 10px 0;
 }
@@ -234,6 +232,7 @@ h1 {
   display: flex;
   align-items: stretch;
   background-color: rgb(253, 247, 242);
+  border-radius: 16px;
   height: 300px;
   margin-top: 30px;
   gap: 70px;
@@ -241,6 +240,7 @@ h1 {
 #contenu .content-wrapper .section-container {
   display: flex;
   flex-direction: row;
+  border-radius: 16px;
 }
 #contenu .content-wrapper .section-container .text-block {
   display: flex;
@@ -248,6 +248,7 @@ h1 {
   flex-direction: column;
   text-align: left;
   background-color: rgb(253, 247, 242);
+  border-radius: 16px;
   max-width: 200px;
   height: 300px;
   padding: 20px;
@@ -275,6 +276,112 @@ h1 {
 #contenu .content-wrapper .section-container .image-container button {
   position: absolute;
   bottom: 10px;
+}
+#contenu .content-wrapper #text-middle {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  margin-top: 80px;
+}
+
+#products {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1300px;
+}
+#products h3 {
+  text-align: center;
+  background-color: rgb(253, 247, 242);
+  border-radius: 16px;
+  color: rgb(237, 142, 156);
+  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  padding: 1rem;
+  margin: 10px 0;
+}
+#products .products-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: center;
+  margin-top: 30px;
+  width: 100%;
+  gap: 80px;
+}
+#products .products-wrapper .product {
+  background-color: rgb(253, 247, 242);
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+#products .products-wrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 300px;
+  height: 300px;
+}
+#products .products-wrapper img:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+}
+
+#profil {
+  padding: 20px;
+}
+#profil table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+#profil table th, #profil table td {
+  text-align: center;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+}
+#profil table th {
+  background-color: rgb(237, 142, 156);
+  font-size: 20px;
+  font-style: italic;
+}
+#profil table td {
+  font-size: 18px;
+}
+#profil table td img {
+  max-width: 100px;
+  height: auto;
+}
+#profil tr.no-data td {
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  border-radius: 16px;
+  font-size: 18px;
+  display: inline-block;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+.btn.btn-primary {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(253, 247, 242);
+  margin: 20px 0;
+  margin-bottom: 50px;
+}
+.btn.btn-primary:hover {
+  background-color: rgb(237, 142, 156);
+  color: rgb(255, 255, 255);
 }
 
 .contact-info {
@@ -310,11 +417,72 @@ h1 {
   line-height: 1.5;
 }
 
+#about-me-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+}
+#about-me-section .content-block {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(253, 247, 242);
+  border-radius: 16px;
+}
+#about-me-section .content-block .about-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+#about-me-section .content-block .about-me .titre {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#about-me-section .content-block .about-me .titre h2 {
+  text-align: center;
+  color: rgb(237, 142, 156);
+  padding: 3rem;
+}
+#about-me-section .content-block .about-me img {
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+#about-me-section .content-block .divider {
+  background-color: rgb(81, 68, 64);
+  height: 1px;
+  width: 80%;
+  margin: 10px auto;
+}
+#about-me-section .content-block .bio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 150px;
+}
+#about-me-section .content-block .bio p {
+  text-align: center;
+}
+#about-me-section .content-block .texte {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+#about-me-section .content-block .texte p {
+  text-align: center;
+  margin: 10px 0;
+}
+
 footer {
   background-color: rgb(253, 247, 242);
   font-family: "Carlito", sans-serif;
   box-shadow: 5px -5px 17px rgba(0, 0, 0, 0.2);
-  margin-top: auto;
+  margin-top: 30px;
   padding: 2rem;
 }
 footer .footer-container {
@@ -379,7 +547,7 @@ footer .map-container iframe {
 }
 footer p {
   text-align: center;
-  font-size: 16px;
+  font-size: 1.2rem;
   color: rgb(0, 0, 0);
   margin-top: 4.5rem;
 }
@@ -391,7 +559,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me {
+#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me, #image_modification, #form-profile {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -399,37 +567,37 @@ h1 {
   padding: 50px;
   gap: 300px;
 }
-#form-login-register .form, #form-forgot-password .form, #gamme-form-create .form, #form-contact .form, #product-form-container .form, #admin-about-me .form {
+#form-login-register .form, #form-forgot-password .form, #gamme-form-create .form, #form-contact .form, #product-form-container .form, #admin-about-me .form, #image_modification .form, #form-profile .form {
   display: flex;
   flex-direction: column;
   background-color: rgb(237, 142, 156);
   border-radius: 16px;
   padding: 30px;
 }
-#form-login-register .form h2, #form-forgot-password .form h2, #gamme-form-create .form h2, #form-contact .form h2, #product-form-container .form h2, #admin-about-me .form h2 {
+#form-login-register .form h2, #form-forgot-password .form h2, #gamme-form-create .form h2, #form-contact .form h2, #product-form-container .form h2, #admin-about-me .form h2, #image_modification .form h2, #form-profile .form h2 {
   text-align: center;
   color: rgb(247, 214, 224);
   margin-bottom: 20px;
 }
-#form-login-register .form label, #form-forgot-password .form label, #gamme-form-create .form label, #form-contact .form label, #product-form-container .form label, #admin-about-me .form label {
+#form-login-register .form label, #form-forgot-password .form label, #gamme-form-create .form label, #form-contact .form label, #product-form-container .form label, #admin-about-me .form label, #image_modification .form label, #form-profile .form label {
   text-align: center;
   font-family: "Carlito", sans-serif;
   font-size: 20px;
   color: rgb(0, 0, 0);
   margin-bottom: 5px;
 }
-#form-login-register .form input, #form-forgot-password .form input, #gamme-form-create .form input, #form-contact .form input, #product-form-container .form input, #admin-about-me .form input {
+#form-login-register .form input, #form-forgot-password .form input, #gamme-form-create .form input, #form-contact .form input, #product-form-container .form input, #admin-about-me .form input, #image_modification .form input, #form-profile .form input {
   background-color: rgb(247, 214, 224);
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 1.2rem;
   color: rgb(0, 0, 0);
   border: 1px solid rgb(81, 68, 64);
   padding: 10px;
   margin-bottom: 20px;
 }
-#form-login-register .form textarea, #form-forgot-password .form textarea, #gamme-form-create .form textarea, #form-contact .form textarea, #product-form-container .form textarea, #admin-about-me .form textarea {
+#form-login-register .form textarea, #form-forgot-password .form textarea, #gamme-form-create .form textarea, #form-contact .form textarea, #product-form-container .form textarea, #admin-about-me .form textarea, #image_modification .form textarea, #form-profile .form textarea {
   background-color: rgb(247, 214, 224);
-  font-size: 16px;
+  font-size: 1.2rem;
   color: rgb(0, 0, 0);
   border: 1px solid rgb(81, 68, 64);
   width: 500px;
@@ -437,7 +605,7 @@ h1 {
   padding: 10px;
   margin-bottom: 20px;
 }
-#form-login-register .form .forgot-password, #form-forgot-password .form .forgot-password, #gamme-form-create .form .forgot-password, #form-contact .form .forgot-password, #product-form-container .form .forgot-password, #admin-about-me .form .forgot-password {
+#form-login-register .form .forgot-password, #form-forgot-password .form .forgot-password, #gamme-form-create .form .forgot-password, #form-contact .form .forgot-password, #product-form-container .form .forgot-password, #admin-about-me .form .forgot-password, #image_modification .form .forgot-password, #form-profile .form .forgot-password {
   text-align: center;
   text-decoration: none;
   font-family: "Carlito", sans-serif;
@@ -445,17 +613,18 @@ h1 {
   color: rgb(0, 0, 0);
   margin-top: -10px;
 }
-#form-login-register .form .forgot-password:hover, #form-forgot-password .form .forgot-password:hover, #gamme-form-create .form .forgot-password:hover, #form-contact .form .forgot-password:hover, #product-form-container .form .forgot-password:hover, #admin-about-me .form .forgot-password:hover {
+#form-login-register .form .forgot-password:hover, #form-forgot-password .form .forgot-password:hover, #gamme-form-create .form .forgot-password:hover, #form-contact .form .forgot-password:hover, #product-form-container .form .forgot-password:hover, #admin-about-me .form .forgot-password:hover, #image_modification .form .forgot-password:hover, #form-profile .form .forgot-password:hover {
   text-decoration: underline;
   color: rgb(255, 255, 255);
 }
-#form-login-register .form p, #form-forgot-password .form p, #gamme-form-create .form p, #form-contact .form p, #product-form-container .form p, #admin-about-me .form p {
+#form-login-register .form p, #form-forgot-password .form p, #gamme-form-create .form p, #form-contact .form p, #product-form-container .form p, #admin-about-me .form p, #image_modification .form p, #form-profile .form p {
   text-align: justify;
   margin-bottom: 15px;
 }
-#form-login-register .form img, #form-forgot-password .form img, #gamme-form-create .form img, #form-contact .form img, #product-form-container .form img, #admin-about-me .form img {
+#form-login-register .form img, #form-forgot-password .form img, #gamme-form-create .form img, #form-contact .form img, #product-form-container .form img, #admin-about-me .form img, #image_modification .form img, #form-profile .form img {
   display: block;
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -486,7 +655,7 @@ h1 {
   margin-bottom: 40px;
 }
 #privacy-policy strong, #general-conditions-sale strong {
-  font-size: 16px;
+  font-size: 1.2rem;
   display: block;
   margin-bottom: 10px;
   font-weight: 700;
@@ -496,7 +665,7 @@ h1 {
   margin-left: 20px;
 }
 #privacy-policy ul li, #general-conditions-sale ul li {
-  font-size: 16px;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
@@ -533,7 +702,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-.gammes-container {
+#gammes-container, #products-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -542,7 +711,7 @@ h1 {
   padding: 20px;
   min-height: 300px;
 }
-.gammes-container a {
+#gammes-container a, #products-container a {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -550,7 +719,7 @@ h1 {
   text-decoration: none;
   background-color: rgba(253, 247, 242, 0.8);
   color: rgb(237, 142, 156);
-  font-size: 16px;
+  font-size: 1.2rem;
   border-radius: 16px;
   border: 1px solid rgb(81, 68, 64);
   text-transform: uppercase;
@@ -559,10 +728,10 @@ h1 {
   padding: 1rem;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.gammes-container a:hover {
+#gammes-container a:hover, #products-container a:hover {
   transform: translateY(-5px);
 }
-.gammes-container a .gamme-item {
+#gammes-container a .gamme-item, #products-container a .gamme-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -571,12 +740,12 @@ h1 {
   width: 100%;
   height: 100%;
 }
-.gammes-container a .gamme-item figure {
+#gammes-container a .gamme-item figure, #products-container a .gamme-item figure {
   position: relative;
   width: 100%;
   margin: 0;
 }
-.gammes-container a .gamme-item figure img {
+#gammes-container a .gamme-item figure img, #products-container a .gamme-item figure img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
@@ -584,7 +753,7 @@ h1 {
   -o-object-position: 40% 50%;
      object-position: 40% 50%;
 }
-.gammes-container a .gamme-item figure figcaption {
+#gammes-container a .gamme-item figure figcaption, #products-container a .gamme-item figure figcaption {
   text-align: center;
   color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.5);
@@ -595,21 +764,21 @@ h1 {
   padding: 10px;
   transform: translate(-50%, -50%);
 }
-.gammes-container a .gamme-item p.description {
+#gammes-container a .gamme-item p.description, #products-container a .gamme-item p.description {
   text-align: center;
   font-style: italic;
   margin-top: 10px;
   padding: 0 10px;
 }
 
-#admin-gammes-container, #product-search-container {
+#admin-gammes-container, #product-search-container, #image_home, #profil {
   padding: 20px;
 }
-#admin-gammes-container h1, #product-search-container h1 {
+#admin-gammes-container h1, #product-search-container h1, #image_home h1, #profil h1 {
   text-align: center;
   color: rgb(237, 142, 156);
 }
-#admin-gammes-container .btn, #product-search-container .btn {
+#admin-gammes-container .btn, #product-search-container .btn, #image_home .btn, #profil .btn {
   text-decoration: none;
   color: rgb(0, 0, 0);
   border-radius: 16px;
@@ -618,54 +787,54 @@ h1 {
   padding: 10px 15px;
   margin-right: 10px;
 }
-#admin-gammes-container .btn.btn-primary, #product-search-container .btn.btn-primary {
+#admin-gammes-container .btn.btn-primary, #product-search-container .btn.btn-primary, #image_home .btn.btn-primary, #profil .btn.btn-primary {
   display: flex;
   justify-content: center;
   background-color: rgb(253, 247, 242);
   margin: 20px 0;
   margin-bottom: 50px;
 }
-#admin-gammes-container .btn.btn-primary:hover, #product-search-container .btn.btn-primary:hover {
+#admin-gammes-container .btn.btn-primary:hover, #product-search-container .btn.btn-primary:hover, #image_home .btn.btn-primary:hover, #profil .btn.btn-primary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container .btn.btn-secondary, #product-search-container .btn.btn-secondary {
+#admin-gammes-container .btn.btn-secondary, #product-search-container .btn.btn-secondary, #image_home .btn.btn-secondary, #profil .btn.btn-secondary {
   background-color: rgb(253, 247, 242);
 }
-#admin-gammes-container .btn.btn-secondary:hover, #product-search-container .btn.btn-secondary:hover {
+#admin-gammes-container .btn.btn-secondary:hover, #product-search-container .btn.btn-secondary:hover, #image_home .btn.btn-secondary:hover, #profil .btn.btn-secondary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container .btn.btn-danger, #product-search-container .btn.btn-danger {
+#admin-gammes-container .btn.btn-danger, #product-search-container .btn.btn-danger, #image_home .btn.btn-danger, #profil .btn.btn-danger {
   background-color: rgb(253, 247, 242);
 }
-#admin-gammes-container .btn.btn-danger:hover, #product-search-container .btn.btn-danger:hover {
+#admin-gammes-container .btn.btn-danger:hover, #product-search-container .btn.btn-danger:hover, #image_home .btn.btn-danger:hover, #profil .btn.btn-danger:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container table, #product-search-container table {
+#admin-gammes-container table, #product-search-container table, #image_home table, #profil table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
-#admin-gammes-container table th, #admin-gammes-container table td, #product-search-container table th, #product-search-container table td {
+#admin-gammes-container table th, #admin-gammes-container table td, #product-search-container table th, #product-search-container table td, #image_home table th, #image_home table td, #profil table th, #profil table td {
   text-align: center;
   border: 1px solid rgb(0, 0, 0);
   padding: 10px;
 }
-#admin-gammes-container table th, #product-search-container table th {
+#admin-gammes-container table th, #product-search-container table th, #image_home table th, #profil table th {
   background-color: rgb(237, 142, 156);
   font-size: 20px;
   font-style: italic;
 }
-#admin-gammes-container table td, #product-search-container table td {
+#admin-gammes-container table td, #product-search-container table td, #image_home table td, #profil table td {
   font-size: 18px;
 }
-#admin-gammes-container table td img, #product-search-container table td img {
+#admin-gammes-container table td img, #product-search-container table td img, #image_home table td img, #profil table td img {
   max-width: 100px;
   height: auto;
 }
-#admin-gammes-container tr.no-data td, #product-search-container tr.no-data td {
+#admin-gammes-container tr.no-data td, #product-search-container tr.no-data td, #image_home tr.no-data td, #profil tr.no-data td {
   text-align: center;
 }
 

@@ -6,7 +6,7 @@ class ProductByGammeViews {
     public function displayProductByGammes($products) {
         $gammeId = $_GET['gammeId'];
         ?>
-        <div class="products-container">
+        <div id="products-container">
             <?php if (!empty($products)) : ?>
                 <?php foreach ($products as $product) : ?>
                     <a href="gammes/<?php echo htmlspecialchars($gammeId);?>/<?php echo htmlspecialchars($product['id']); ?>">

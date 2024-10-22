@@ -11,5 +11,4 @@ body {
 
 #body-content {
     @include flexbox(center, center, column);
-    margin: auto;
 }

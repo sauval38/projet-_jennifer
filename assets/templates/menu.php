@@ -15,7 +15,7 @@
                 <!-- Regular Navigation -->
                 <a href="">Accueil</a>
                 <a href="gammes">Gamme</a>
-                <a href="">A propos de moi</a>
+                <a href="aboutMe">A propos de moi</a>
             <?php endif; ?>
         </div>
 

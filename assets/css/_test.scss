@@ -1,0 +1,47 @@
+#gamme-form-create {
+    @include flexbox(space-evenly,  flex-start);
+    border-radius: $border_radius; 
+    padding: 50px;
+
+    .form {
+        @include flexbox(false, false, column);
+        background-color: $background-color_salmonpink;
+        border-radius: $border_radius;
+        padding: 30px;
+
+        label {
+            font-family: $fontpara;
+            font-size: $fontsize_h3;
+            color: $color_black;
+            margin-bottom: 5px;
+        }
+
+        input {
+            background-color: $background-color_minipink;
+            border-radius: $border_radius_input;
+            font-size: $fontsize_para;
+            color: $color_black;
+            border: 1px solid $border_taupe;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password {
+            @include text-align(center);
+            @include text-decoration(none);
+            font-family: $fontpara;
+            font-size: $fontsize_h3;
+            color: $color_black;
+            margin-top: -10px; 
+            &:hover {
+                @include text-decoration(underline);
+                color: $color_white; 
+            }
+        }
+
+        p {
+            @include text-align(justify);
+            margin-bottom: 15px;
+        }
+    }
+}

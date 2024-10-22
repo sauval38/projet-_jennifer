@@ -33,11 +33,26 @@ RewriteRule ^general-condition$ index.php?action=general-condition [L,QSA]
 # Redirection pour l'accès à 'contact'
 RewriteRule ^contact$ index.php?action=contact [L,QSA]
 
+# Redirection pour l'accès à 'profil'
+RewriteRule ^profile$ index.php?action=profile [L,QSA]
+
+# Redirection pour l'accès à 'modification profil'
+RewriteRule ^update_profile$ index.php?action=update_profile [L,QSA]
+
+# Redirection pour l'accès à 'a propos de moi'
+RewriteRule ^aboutMe$ index.php?action=aboutMe [L,QSA]
+
 # Redirection pour l'accès à 'panier'
 RewriteRule ^panier$ index.php?action=panier [L,QSA]
 
 # Redirection pour l'accès à 'admin'
 RewriteRule ^admin$ index.php?action=admin [L,QSA]
+
+# Redirection pour l'accès à 'admin/home'
+RewriteRule ^admin/home$ index.php?action=admin&step=home [L,QSA]
+
+# Redirection pour l'accès à 'admin/home/modification'
+RewriteRule ^admin/home/modification$ index.php?action=admin&step=home&crud=modification [L,QSA]
 
 # Redirection pour l'accès à 'admin/gammes'
 RewriteRule ^admin/gammes$ index.php?action=admin&step=gammes

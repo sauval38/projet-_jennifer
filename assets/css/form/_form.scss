@@ -5,7 +5,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me {
+#form-login-register, #form-forgot-password, #gamme-form-create, #form-contact, #product-form-container, #admin-about-me, #image_modification, #form-profile {
     @include flexbox(space-evenly, flex-start, false);
     border-radius: $border_radius; 
     padding: 50px;
@@ -73,6 +73,7 @@ h1 {
         img {
             display: block;
             margin: 0 auto;
+            margin-bottom: 30px;
         }
     }
 }

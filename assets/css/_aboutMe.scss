@@ -1,0 +1,61 @@
+#about-me-section {
+    @include flexbox (false, false, column);
+    width: 100%; 
+    max-width: 1000px; 
+    margin: 20px auto;
+    padding: 20px; 
+
+    .content-block {
+        @include flexbox (false, false, column);
+        background-color: $background-color_isabeline;
+        border-radius: $border_radius;
+        
+        .about-me {
+            @include flexbox (space-between, center, false);
+            padding: 20px; 
+
+            .titre {
+                @include flexbox (false, center, column);
+
+                h2 {
+                    @include text-align(center);
+                    color: $color_salmonpink; 
+                    padding: 3rem;
+                }
+            }
+
+            img {
+                border-radius: 50%;
+                max-width: 100%; 
+                height: auto; 
+            }
+        }
+
+        .divider {
+            background-color: $color_taupe;
+            height: 1px; 
+            width: 80%;
+            margin: 10px auto; 
+        }
+
+        .bio {
+            @include flexbox (center, center, false); 
+            padding: 20px; 
+            height: 150px; 
+
+            p {
+                @include text-align(center);
+            }
+        }
+
+        .texte {
+            @include flexbox (false, false, column);
+            padding: 20px;
+
+            p {
+                @include text-align(center);
+                margin: 10px 0;
+            }
+        }
+    }
+}

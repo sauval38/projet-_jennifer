@@ -27,11 +27,14 @@ class AdminAboutMeModels {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateAboutMe($id, $bio, $imagePath) {
-        $stmt = $this->db->prepare("UPDATE about_me SET bio = :bio, image_path = :image_path WHERE id = :id");
+    public function updateAboutMe($id, $bio, $imagePath, $text_1, $text_2, $text_3) {
+        $stmt = $this->db->prepare("UPDATE about_me SET bio = :bio, image_path = :image_path, text_1 = :text_1, text_2 = :text_2, text_3 = :text_3 WHERE id = :id");
         return $stmt->execute([
             ':bio' => $bio,
             ':image_path' => $imagePath,
+            ':text_1' => $text_1,
+            ':text_2' => $text_2,
+            ':text_3' => $text_3,
             ':id' => $id
         ]);
     }

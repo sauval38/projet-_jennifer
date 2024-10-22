@@ -16,6 +16,7 @@ h1 {
         @include flexbox (center, center, column);
         @include text-align (center);
         background-color: $background-color_isabeline;
+        border-radius: $border_radius;
         height: auto;  
         width: 200px; 
         padding: 20px; 
@@ -37,7 +38,6 @@ h1 {
             margin-right: auto;
             max-width: 600px; 
             padding: 1rem;
-            border: 1;
             margin-top: 30px;
             margin: 10px 0;
         }
@@ -45,6 +45,7 @@ h1 {
 
     .carousel {
         @include flexbox (false, center);
+        border-radius: $border_radius;
         overflow: hidden;
         position: relative;
         flex: 1;
@@ -84,7 +85,6 @@ h1 {
         margin-right: auto;
         max-width: 600px; 
         padding: 1rem;
-        border: 1;
         margin-top: 30px;
         margin: 10px 0;
     }
@@ -92,17 +92,20 @@ h1 {
     .content-wrapper {
         @include flexbox (false, stretch);
         background-color: $background-color_isabeline;
+        border-radius: $border_radius;
         height: 300px;
         margin-top: 30px;
         gap: 70px; 
         
         .section-container {
             @include flexbox (false, false, row);
-        
+            border-radius: $border_radius;
+
             .text-block {
                 @include flexbox (center, false, column);
                 @include text-align(left);
                 background-color: $background-color_isabeline;
+                border-radius: $border_radius;
                 max-width: 200px;
                 height: 300px;
                 padding: 20px;
@@ -134,8 +137,61 @@ h1 {
                 }
             }
         }
+
+        #text-middle {
+            @include text-align(center);
+            color: $color_salmonpink;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            margin-top: 80px;
+        }
     }
 }
+
+#products {
+    @include flexbox(false, center, column);
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1300px;
+    
+    h3 {
+        @include text-align(center); 
+        background-color: $background-color_isabeline; 
+        border-radius: $border_radius;
+        color: $color_salmonpink;
+        font-style: italic;
+        margin-left: auto; 
+        margin-right: auto;
+        max-width: 600px; 
+        padding: 1rem;
+        margin: 10px 0;
+    }
+
+    .products-wrapper {
+        @include flexbox(center, false, center);
+        margin-top: 30px;
+        width: 100%;
+        gap: 80px;
+
+        .product {
+            background-color: $background-color_isabeline;
+            border-radius: $border_radius;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        img {
+            object-fit: cover;
+            width: 300px; 
+            height: 300px; 
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+        }
+    }
+}
+
 
 
 

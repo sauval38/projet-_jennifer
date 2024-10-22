@@ -1,0 +1,65 @@
+h1 {
+    @include text-align(center);
+    color: $color_salmonpink;
+}
+
+#profil {
+    padding: 20px;
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    
+        th, td {
+          @include text-align(center);
+          border: 1px solid $border_black;
+          padding: 10px;
+        }
+    
+        th {
+          background-color: $background-color_salmonpink;
+          font-size: $fontsize_h3;
+          font-style: italic;
+        }
+    
+        td {
+          font-size: $fontsize_h4;
+          img {
+            max-width: 100px;
+            height: auto;
+          }
+        }
+      }
+    
+      tr {
+        &.no-data {
+          td {
+            @include text-align(center);
+          }
+        }
+      }
+    }
+    .btn {
+        @include text-decoration(none);
+        color: $color_black;
+        border-radius: $border-radius;
+        font-size: $fontsize_h4;
+        display: inline-block;
+        padding: 10px 15px;
+        margin-right: 10px;
+    
+        &.btn-primary {
+          @include flexbox(center);
+          background-color: $color_isabeline;
+          margin: 20px 0;
+          margin-bottom: 50px;
+          
+          &:hover {
+            background-color: $background-color_salmonpink;
+            color: $color_white;
+          }
+        }
+    }    
+  
+   

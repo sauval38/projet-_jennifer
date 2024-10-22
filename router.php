@@ -4,6 +4,14 @@ require_once('vendor/autoload.php');
 
 use App\Database;
 
+use AdminControllers\AdminAboutMeControllers;
+use AdminControllers\AdminDashboardControllers;
+use AdminControllers\AdminGammesControllers;
+use AdminControllers\AdminProductsControllers;
+use AdminControllers\AdminProductSearchController;
+use AdminControllers\AdminHomeControllers;
+use AdminControllers\AdminHomeFormControllers;
+use Controllers\AboutMeControllers;
 use Controllers\ContactControllers;
 use Controllers\FormForgotPasswordControllers;
 use Controllers\FormResetPasswordControllers;
@@ -11,19 +19,22 @@ use Controllers\GeneralConditionsSaleControllers;
 use Controllers\HomeControllers;
 use Controllers\LoginFormControllers;
 use Controllers\PrivacyPolicyControllers;
+use Controllers\ProfileControllers;
+use Controllers\ProfileFormControllers;
 use Controllers\RegisterFormControllers;
 use Controllers\GammesControllers;
 use Controllers\ProductByGammeControllers;
 use Controllers\CartController;
-use AdminControllers\AdminAboutMeControllers;
 use Controllers\ProductPageControllers;
-use AdminControllers\AdminDashboardControllers;
-use AdminControllers\AdminGammesControllers;
-use AdminControllers\AdminProductsControllers;
-use AdminControllers\AdminProductSearchController;
 
 $pdo = new Database;
 
+// Vérifiez si la session est déjà active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$_SESSION['role'] = $_SESSION['role'] ?? null;
 $step = $_REQUEST['step'] ?? null;
 $action = $_REQUEST['action'] ?? null;
 $crud = $_REQUEST['crud'] ?? null;
@@ -39,7 +50,7 @@ switch ($action) {
         break;
 
     case 'gammes':
-        if($gammeId) {
+        if ($gammeId) {
             if ($productId) {
                 $productPageControllers = new ProductPageControllers();
                 $productPageControllers->showProductPage();
@@ -103,86 +114,131 @@ switch ($action) {
         break;
 
     case 'admin':
-        $adminDashboardControllers = new AdminDashboardControllers();
-        if (!$step) {
-            $adminDashboardControllers->showAdminBoard();
-        } else {
-            switch ($step) {
-                case 'gammes':
-                    $adminGammesController = new AdminGammesControllers();
-                    $gammesControllers = new GammesControllers();
+        if (isset($_SESSION['is_logged_in']) && $_SESSION['role'] == "ADMIN") {
+            $adminDashboardControllers = new AdminDashboardControllers();
+            if (!$step) {
+                $adminDashboardControllers->showAdminBoard();
+            } else {
+                switch ($step) {
+                    case 'gammes':
+                        $adminGammesController = new AdminGammesControllers();
+                        $gammesControllers = new GammesControllers();
 
-                    switch ($crud) {
-                        case 'create':
-                        case 'edit':
-                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                $adminGammesController->handleFormSubmission();
-                            } else {
-                                $adminGammesController->showForm($id);
-                            }
-                            break;
+                        switch ($crud) {
+                            case 'create':
+                            case 'edit':
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                    $adminGammesController->handleFormSubmission();
+                                } else {
+                                    $adminGammesController->showForm($id);
+                                }
+                                break;
 
-                        case 'delete':
-                            if ($id) {
-                                $adminGammesController->deleteGamme($id);
-                            } else {
-                                echo "ID manquant pour la suppression.";
-                            }
-                            break;
+                            case 'delete':
+                                if ($id) {
+                                    $adminGammesController->deleteGamme($id);
+                                } else {
+                                    echo "ID manquant pour la suppression.";
+                                }
+                                break;
 
-                        default:
-                            $gammesControllers->showAdminGammes();
-                            break;
-                    }
-                    break;
+                            default:
+                                $gammesControllers->showAdminGammes();
+                                break;
+                        }
+                        break;
 
-                case 'products':
-                    $adminProduitsController = new AdminProductsControllers();
-                    $produitsControllers = new AdminProductSearchController();
+                    case 'products':
+                        $adminProduitsController = new AdminProductsControllers();
+                        $produitsControllers = new AdminProductSearchController();
 
-                    switch ($crud) {
-                        case 'create':
-                        case 'edit':
-                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                $adminProduitsController->handleFormSubmission();
-                            } else {
-                                $adminProduitsController->showForm($id);
-                            }
-                            break;
+                        switch ($crud) {
+                            case 'create':
+                            case 'edit':
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                    $adminProduitsController->handleFormSubmission();
+                                } else {
+                                    $adminProduitsController->showForm($id);
+                                }
+                                break;
 
-                        case 'delete':
-                            if ($id) {
-                                $adminProduitsController->deleteProduct($id);
-                            } else {
-                                echo "ID manquant pour la suppression.";
-                            }
-                            break;
+                            case 'delete':
+                                if ($id) {
+                                    $adminProduitsController->deleteProduct($id);
+                                } else {
+                                    echo "ID manquant pour la suppression.";
+                                }
+                                break;
 
-                        case 'deleteImage':
-                            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                                $adminProduitsController->deleteImage();
-                            } else {
-                                echo "Action non autorisée.";
-                            }
-                            break;
+                            case 'deleteImage':
+                                if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                                    $adminProduitsController->deleteImage();
+                                } else {
+                                    echo "Action non autorisée.";
+                                }
+                                break;
 
-                        default:
-                            $produitsControllers->showProducts();
-                            break;
-                    }
-                    break;
+                            default:
+                                $produitsControllers->showProducts();
+                                break;
+                        }
+                        break;
 
-                case 'aboutMe':
-                    $adminAboutMeControllers = new AdminAboutMeControllers();
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        $adminAboutMeControllers->updateAboutMe();
-                    } else {
-                        $adminAboutMeControllers->showAboutMe();
-                    }
-                    break;
+                    case 'aboutMe':
+                        $adminAboutMeControllers = new AdminAboutMeControllers();
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                            $adminAboutMeControllers->updateAboutMe();
+                        } else {
+                            $adminAboutMeControllers->showAboutMe();
+                        }
+                        break;
+
+                    case 'home':    
+                        $adminHomeControllers = new AdminHomeControllers();
+                        $adminHomeFormControllers = new AdminHomeFormControllers();
+                        
+                        switch ($crud) {
+                            case 'modification':
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                    if (isset($_FILES['image'])) {
+                                        $adminHomeFormControllers->uploadImage();
+                                    } else {
+                                        $adminHomeFormControllers->homeFormAdminControllers();
+                                    }
+                                } else {
+                                    $adminHomeControllers->adminImageControllers(); 
+                                }
+                                break;
+                        
+                            default:
+                                $adminHomeControllers->adminImageControllers();
+                                break;
+                        }
+                        break;
+                }
             }
-        }
+        } 
         break;
+
+    case 'profile':
+        $profileControllers = new ProfileControllers();
+        $profileControllers->profilControllers();
+        break;   
+        
+    case 'update_profile':
+        $profileFormControllers = new ProfileFormControllers();
+        $user_id = $_SESSION['id']; // Supposant que l'ID de l'utilisateur est stocké dans la session
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $profileFormControllers->updateProfile($user_id);
+        } else {
+            $profileFormControllers->profilFormControllers($user_id);
+        }
+        break;     
+
+    case 'aboutMe':
+        $aboutMeControllers = new AboutMeControllers();
+        $aboutMeControllers->aboutMeControllers();
+        break;   
 
     case 'contact':
         $contactControllers = new ContactControllers();
@@ -224,5 +280,4 @@ switch ($action) {
         $cartController = new CartController();
         $cartController->removeFromCart();
         break;
-
 }
