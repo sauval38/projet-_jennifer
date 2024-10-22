@@ -14,7 +14,7 @@ class CartShowModel {
 
     public function getCartItems($userId) {
         $stmt = $this->db->prepare("
-            SELECT cd.id AS cart_detail_id, p.name, p.price, p.weight, po.option_value AS color, pi.image_path, cd.quantity
+            SELECT cd.id AS cart_detail_id, cd.cart_id, p.name, p.price, p.weight, po.option_value AS color, pi.image_path, cd.quantity
             FROM cart_detail cd
             JOIN cart c ON c.id = cd.cart_id
             JOIN products p ON p.id = cd.product_id
@@ -23,10 +23,20 @@ class CartShowModel {
             WHERE c.user_id = :userId
         ");
         $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        
+        if ($stmt->execute()) {
+            $cartItems = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            if (!empty($cartItems)) {
+                // On récupère le cart_id du premier élément, car tous les items appartiennent au même panier
+                $_SESSION['cart_id'] = $cartItems[0]['cart_id'];
+            }
+            return $cartItems;
+        } else {
+            // Si la requête échoue, retourner un tableau vide ou gérer l'erreur comme souhaité
+            return [];
+        }
     }
-
+    
     public function updateItemQuantity($cartDetailId, $quantity) {
         $stmt = $this->db->prepare("
             UPDATE cart_detail 

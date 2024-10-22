@@ -29,7 +29,7 @@ class RecapOrderModel {
     }
 
     public function getSelectedDeliveryOption() {
-        $deliveryOptionId = $_SESSION['delivery_option_id'] ?? null;
+        $deliveryOptionId = $_SESSION['selected_delivery_option'] ?? null;
         if ($deliveryOptionId) {
             try {
                 $pdo = $this->db->getConnection()->prepare("SELECT id, name, price FROM delivery_option WHERE id = ?");

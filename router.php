@@ -217,7 +217,7 @@ switch ($action) {
                 break;
             case 'recap':
                 $recapOrder = new RecapOrderController();
-                $cart_id = $_SESSION['cart_id'];;
+                $cart_id = $_SESSION['cart_id'];
                 $recapOrder->RecapPlz($cart_id);
                 break;
             case 'paiement':

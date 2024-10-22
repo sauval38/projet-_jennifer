@@ -17,6 +17,7 @@ class RecapOrderController {
         $cartDetails = $this->recapOrderModel->fetchCartDetails($cartId);
         $deliveryOption = $this->recapOrderModel->getSelectedDeliveryOption();
         $totalAmount = $this->recapOrderModel->calculateTotalAmount($cartDetails, $deliveryOption);
+        $_SESSION['total_order'] = $totalAmount;
 
         $this->recapOrderView->render($cartDetails, $deliveryOption, $totalAmount);
     }

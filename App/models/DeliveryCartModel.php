@@ -21,9 +21,9 @@ class DeliveryCartModel {
         }
     }
 
-    public function saveDeliveryChoiceToSession($deliveryOptionId) {
+    public function saveDeliveryChoiceToSession($selectedOptionId) {
         // Stocker l'option de livraison choisie dans la session
-        $_SESSION['delivery_option_id'] = $deliveryOptionId;
+        $_SESSION['selected_delivery_option'] = $selectedOptionId;
     }
 }
 ?>

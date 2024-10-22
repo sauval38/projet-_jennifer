@@ -38,9 +38,11 @@ class CartShowView {
                     </div>
                     <?php
                 }
+                ?>
+                <a href="commande/adresse">COMMANDER</a>
+            <?php
             }
             ?>
-            <a href="commande/adresse">COMMANDER</a>
         </div>
         <script src="./assets/js/cartUpdate.js"></script>
         <?php
