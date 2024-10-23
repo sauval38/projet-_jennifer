@@ -51,6 +51,12 @@ RewriteRule ^admin$ index.php?action=admin [L,QSA]
 # Redirection pour l'accès à 'admin/home'
 RewriteRule ^admin/home$ index.php?action=admin&step=home [L,QSA]
 
+# Redirection pour l'accès à 'admin/colors'
+RewriteRule ^admin/colors$ index.php?action=admin&step=colors [L,QSA]
+
+# Redirection pour l'accès à 'admin/addColors'
+RewriteRule ^admin/add-color$ index.php?action=admin&step=add-color [L,QSA]
+
 # Redirection pour l'accès à 'admin/home/modification'
 RewriteRule ^admin/home/modification$ index.php?action=admin&step=home&crud=modification [L,QSA]
 

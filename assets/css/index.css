@@ -771,14 +771,14 @@ h1 {
   padding: 0 10px;
 }
 
-#admin-gammes-container, #product-search-container, #image_home, #profil {
+#admin-gammes-container, #product-search-container, #image_home, #profil, #colors {
   padding: 20px;
 }
-#admin-gammes-container h1, #product-search-container h1, #image_home h1, #profil h1 {
+#admin-gammes-container h1, #product-search-container h1, #image_home h1, #profil h1, #colors h1 {
   text-align: center;
   color: rgb(237, 142, 156);
 }
-#admin-gammes-container .btn, #product-search-container .btn, #image_home .btn, #profil .btn {
+#admin-gammes-container .btn, #product-search-container .btn, #image_home .btn, #profil .btn, #colors .btn {
   text-decoration: none;
   color: rgb(0, 0, 0);
   border-radius: 16px;
@@ -787,54 +787,54 @@ h1 {
   padding: 10px 15px;
   margin-right: 10px;
 }
-#admin-gammes-container .btn.btn-primary, #product-search-container .btn.btn-primary, #image_home .btn.btn-primary, #profil .btn.btn-primary {
+#admin-gammes-container .btn.btn-primary, #product-search-container .btn.btn-primary, #image_home .btn.btn-primary, #profil .btn.btn-primary, #colors .btn.btn-primary {
   display: flex;
   justify-content: center;
   background-color: rgb(253, 247, 242);
   margin: 20px 0;
   margin-bottom: 50px;
 }
-#admin-gammes-container .btn.btn-primary:hover, #product-search-container .btn.btn-primary:hover, #image_home .btn.btn-primary:hover, #profil .btn.btn-primary:hover {
+#admin-gammes-container .btn.btn-primary:hover, #product-search-container .btn.btn-primary:hover, #image_home .btn.btn-primary:hover, #profil .btn.btn-primary:hover, #colors .btn.btn-primary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container .btn.btn-secondary, #product-search-container .btn.btn-secondary, #image_home .btn.btn-secondary, #profil .btn.btn-secondary {
+#admin-gammes-container .btn.btn-secondary, #product-search-container .btn.btn-secondary, #image_home .btn.btn-secondary, #profil .btn.btn-secondary, #colors .btn.btn-secondary {
   background-color: rgb(253, 247, 242);
 }
-#admin-gammes-container .btn.btn-secondary:hover, #product-search-container .btn.btn-secondary:hover, #image_home .btn.btn-secondary:hover, #profil .btn.btn-secondary:hover {
+#admin-gammes-container .btn.btn-secondary:hover, #product-search-container .btn.btn-secondary:hover, #image_home .btn.btn-secondary:hover, #profil .btn.btn-secondary:hover, #colors .btn.btn-secondary:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container .btn.btn-danger, #product-search-container .btn.btn-danger, #image_home .btn.btn-danger, #profil .btn.btn-danger {
+#admin-gammes-container .btn.btn-danger, #product-search-container .btn.btn-danger, #image_home .btn.btn-danger, #profil .btn.btn-danger, #colors .btn.btn-danger {
   background-color: rgb(253, 247, 242);
 }
-#admin-gammes-container .btn.btn-danger:hover, #product-search-container .btn.btn-danger:hover, #image_home .btn.btn-danger:hover, #profil .btn.btn-danger:hover {
+#admin-gammes-container .btn.btn-danger:hover, #product-search-container .btn.btn-danger:hover, #image_home .btn.btn-danger:hover, #profil .btn.btn-danger:hover, #colors .btn.btn-danger:hover {
   background-color: rgb(237, 142, 156);
   color: rgb(255, 255, 255);
 }
-#admin-gammes-container table, #product-search-container table, #image_home table, #profil table {
+#admin-gammes-container table, #product-search-container table, #image_home table, #profil table, #colors table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
-#admin-gammes-container table th, #admin-gammes-container table td, #product-search-container table th, #product-search-container table td, #image_home table th, #image_home table td, #profil table th, #profil table td {
+#admin-gammes-container table th, #admin-gammes-container table td, #product-search-container table th, #product-search-container table td, #image_home table th, #image_home table td, #profil table th, #profil table td, #colors table th, #colors table td {
   text-align: center;
   border: 1px solid rgb(0, 0, 0);
   padding: 10px;
 }
-#admin-gammes-container table th, #product-search-container table th, #image_home table th, #profil table th {
+#admin-gammes-container table th, #product-search-container table th, #image_home table th, #profil table th, #colors table th {
   background-color: rgb(237, 142, 156);
   font-size: 20px;
   font-style: italic;
 }
-#admin-gammes-container table td, #product-search-container table td, #image_home table td, #profil table td {
+#admin-gammes-container table td, #product-search-container table td, #image_home table td, #profil table td, #colors table td {
   font-size: 18px;
 }
-#admin-gammes-container table td img, #product-search-container table td img, #image_home table td img, #profil table td img {
+#admin-gammes-container table td img, #product-search-container table td img, #image_home table td img, #profil table td img, #colors table td img {
   max-width: 100px;
   height: auto;
 }
-#admin-gammes-container tr.no-data td, #product-search-container tr.no-data td, #image_home tr.no-data td, #profil tr.no-data td {
+#admin-gammes-container tr.no-data td, #product-search-container tr.no-data td, #image_home tr.no-data td, #profil tr.no-data td, #colors tr.no-data td {
   text-align: center;
 }
 

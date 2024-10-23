@@ -11,6 +11,8 @@ use AdminControllers\AdminProductsControllers;
 use AdminControllers\AdminProductSearchController;
 use AdminControllers\AdminHomeControllers;
 use AdminControllers\AdminHomeFormControllers;
+use AdminControllers\AdminColorsControllers;
+use AdminControllers\AdminAddColorsControllers;
 use Controllers\AboutMeControllers;
 use Controllers\ContactControllers;
 use Controllers\FormForgotPasswordControllers;
@@ -184,14 +186,24 @@ switch ($action) {
                         }
                         break;
 
-                    case 'aboutMe':
-                        $adminAboutMeControllers = new AdminAboutMeControllers();
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                            $adminAboutMeControllers->updateAboutMe();
-                        } else {
-                            $adminAboutMeControllers->showAboutMe();
-                        }
-                        break;
+                        case 'aboutMe':
+                            $adminAboutMeControllers = new AdminAboutMeControllers();
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $adminAboutMeControllers->updateAboutMe();
+                            } else {
+                                $adminAboutMeControllers->showAboutMe();
+                            }
+                            break;
+
+                        case 'colors':
+                            $adminColorsControllers = new AdminColorsControllers();
+                            $adminColorsControllers->AdminColorsControllers();
+                            break;
+
+                        case 'add-color':
+                            $adminAddColorsControllers = new AdminAddColorsControllers();
+                            $adminAddColorsControllers->AddColorsControllers(); 
+                            break;   
 
                     case 'home':    
                         $adminHomeControllers = new AdminHomeControllers();
