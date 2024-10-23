@@ -28,6 +28,12 @@ use Controllers\GammesControllers;
 use Controllers\ProductByGammeControllers;
 use Controllers\CartController;
 use Controllers\ProductPageControllers;
+use Controllers\CartShowController;
+use Controllers\AddressCartController;
+use Controllers\DeliveryCartController;
+use Controllers\RecapOrderController;
+use Controllers\PaymentController;
+use Controllers\ValidationController;
 
 $pdo = new Database;
 
@@ -44,6 +50,7 @@ $id = $_REQUEST['id'] ?? null;
 $gammeId = $_REQUEST['gammeId'] ?? null;
 $productId = $_REQUEST['productId'] ?? null;
 $formType = $_POST['form_type'] ?? '';
+$userId = $_SESSION['id'] ?? null;
 
 switch ($action) {
     default:
@@ -227,16 +234,63 @@ switch ($action) {
                                 break;
                         }
                         break;
-                }
             }
-        } 
+        }
+        break;
+    }
+    case 'commande':
+    if (!isset($_SESSION['id'])) {
+        header('Location: ../login');
+        exit();
+    } else {
+        $step = $_REQUEST['step'] ?? null;
+        switch ($step) {
+            case 'adresse':
+                $addressCartController = new AddressCartController();
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if ($addressCartController->AddressSave()) {
+                        header("Location: ./livraison");
+                        exit();
+                    } else {
+                        $addressCartController->AddressForm();
+                    }
+                } else {
+                    $addressCartController->AddressForm();
+                }
+                break;
+            case 'livraison':
+                $deliveryCartController = new DeliveryCartController();
+                $deliveryCartController->DeliveryChoice();
+                break;
+            case 'recap':
+                $recapOrder = new RecapOrderController();
+                $cart_id = $_SESSION['cart_id'];
+                $recapOrder->RecapPlz($cart_id);
+                break;
+            case 'paiement':
+                // Etape 'paiement'
+                $paymentController = new PaymentController();
+                $paymentController->PaymentChoice();
+                break;
+            case 'check-validation':
+                // Etape 'check-validation'
+                $validationController = new ValidationController();
+                $validationController->orderCheck();
+                break;
+            case 'validation':
+                // Etape 'validation'
+                $validationController = new ValidationController();
+                $validationController->orderValidate();
+                break;
+        }
+    }
         break;
 
     case 'profile':
         $profileControllers = new ProfileControllers();
         $profileControllers->profilControllers();
         break;   
-        
+            
     case 'update_profile':
         $profileFormControllers = new ProfileFormControllers();
         $user_id = $_SESSION['id']; // Supposant que l'ID de l'utilisateur est stocké dans la session
@@ -245,12 +299,12 @@ switch ($action) {
         } else {
             $profileFormControllers->profilFormControllers($user_id);
         }
-        break;     
+        break; 
 
     case 'aboutMe':
         $aboutMeControllers = new AboutMeControllers();
         $aboutMeControllers->aboutMeControllers();
-        break;   
+        break;
 
     case 'contact':
         $contactControllers = new ContactControllers();
@@ -272,8 +326,42 @@ switch ($action) {
         break;
         
     case 'panier':
-        echo 'PANIER';
+        if ($userId) {
+            $cartShowController = new CartShowController();
+            $cartShowController->displayCart($userId);
+        } else {
+            echo '<h1>Veuillez vous <a href="login">connecter</a> pour acceder à votre panier</h1>';
+        }
+        
         break;
+    
+    case 'update-quantity':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            error_log('Updating quantity'); // Log pour voir si cette partie du code est atteinte
+            $data = json_decode(file_get_contents('php://input'), true);
+            $cartDetailId = $data['cartDetailId'];
+            $quantity = $data['quantity'];
+
+            $cartShowController = new CartShowController();
+            $cartShowController->updateQuantity($cartDetailId, $quantity);
+        } else {
+            error_log('Invalid request method for update-quantity'); // Log si la méthode n'est pas POST
+        }
+        break;
+
+    case 'remove-item':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            error_log('Removing item'); // Log pour voir si cette partie du code est atteinte
+            $data = json_decode(file_get_contents('php://input'), true);
+            $cartDetailId = $data['cartDetailId'];
+
+            $cartShowController = new CartShowController();
+            $cartShowController->removeItem($cartDetailId);
+        } else {
+            error_log('Invalid request method for remove-item'); // Log si la méthode n'est pas POST
+        }
+        break;
+
 
     case 'addToCart':
         // Cas où l'action est 'addToCart' pour ajouter un produit au panier
