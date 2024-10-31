@@ -36,18 +36,19 @@ class AdminGammesModels {
         return $stmt->execute();
     }
 
-    public function updateGamme($id, $name, $description, $image_path) {
-        $query = "UPDATE products_range SET name = :name, description = :description, image_path = :image_path WHERE id = :id";
+    public function updateGamme($id, $name, $description, $image_path, $archived) {
+        $query = "UPDATE products_range SET name = :name, description = :description, image_path = :image_path, archived = :archived WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':image_path', $image_path);
+        $stmt->bindParam(':archived', $archived, \PDO::PARAM_INT);
         return $stmt->execute();
     }
 
     public function deleteGamme($id) {
-        $query = "DELETE FROM products_range WHERE id = :id";
+        $query = "UPDATE products_range SET archived = 1 WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         return $stmt->execute();

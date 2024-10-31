@@ -38,6 +38,7 @@ class AdminGammesControllers {
         $id = $_POST['id'] ?? null;
         $name = $_POST['name'] ?? '';
         $description = $_POST['description'] ?? '';
+        $archived = $_POST['archived'] ?? '';
 
         // Gestion du téléchargement de l'image
         if (isset($_FILES['image_path']) && $_FILES['image_path']['error'] === UPLOAD_ERR_OK) {
@@ -65,7 +66,7 @@ class AdminGammesControllers {
         }
 
         if ($id) {
-            $this->gammesModels->updateGamme($id, $name, $description, $image_path);
+            $this->gammesModels->updateGamme($id, $name, $description, $image_path, $archived);
             $_SESSION['message'] = "Gamme modifiée avec succès!";
             header('Location: ../../gammes');
         } else {
@@ -80,12 +81,12 @@ class AdminGammesControllers {
         $gamme = $this->gammesModels->getGammeById($id);
 
         if ($gamme) {
-            $image_path = $gamme['image_path'];
+            // $image_path = $gamme['image_path'];
 
             // Supprime l'image associée si elle existe
-            if ($image_path && file_exists($image_path)) {
-                unlink($image_path);
-            }
+            // if ($image_path && file_exists($image_path)) {
+            //     unlink($image_path);
+            // }
 
             $this->gammesModels->deleteGamme($id);
             $_SESSION['message'] = "Gamme supprimée avec succès!";

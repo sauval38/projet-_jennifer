@@ -49,13 +49,6 @@ class AdminProductImagesModels {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     
-    public function deleteImagesByProductId($product_id) {
-        $query = "DELETE FROM product_images WHERE product_id = :product_id";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':product_id', $product_id, \PDO::PARAM_INT);
-        $stmt->execute();
-    }
-
     public function getImageById($imageId) {
         $query = "SELECT * FROM product_images WHERE id = :image_id";
         $stmt = $this->db->prepare($query);

@@ -23,6 +23,9 @@ class AdminGammeFormViews {
                     <img src="<?php echo htmlspecialchars($gamme['image_path']); ?>" alt="<?php echo htmlspecialchars($gamme['name']); ?>" style="max-width: 100px;">
                 <?php endif; ?>
                 <br>
+                <label for="archived">Archivé:</label>
+                <input type="checkbox" id="archived" name="archived" value="1" <?php echo $gamme['archived'] ? 'checked' : 0; ?>>
+                <br>
                 <button type="submit" class="btn btn-primary"><?php echo $gamme['id'] ? 'Modifier' : 'Créer'; ?></button>
             </form>
         </div>

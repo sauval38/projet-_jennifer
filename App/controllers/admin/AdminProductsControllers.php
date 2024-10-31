@@ -79,6 +79,7 @@ class AdminProductsControllers {
         $stock = $_POST['stock'] ?? '';
         $height = $_POST['height'] ?? '';
         $weight = $_POST['weight'] ?? '';
+        $archived = $_POST['archived'] ?? '';
         $selectedColors = $_POST['colors'] ?? []; // Récupération des couleurs sélectionnées
         $imageOptions = $_POST['image_options'] ?? []; // Options associées aux images
     
@@ -87,26 +88,25 @@ class AdminProductsControllers {
     
         if ($id) {
             // Mise à jour du produit
-            $this->productsModels->updateProduct($id, $product_range_id, $name, $description, $price, $stock, $height, $weight);
+            $this->productsModels->updateProduct($id, $product_range_id, $name, $description, $price, $stock, $height, $weight, $archived);
             
             // Gestion des images et des options associées
             if (isset($_FILES['images'])) {
                 $this->productImagesModels->saveImages($id, $_FILES['images'], $imageOptions);
             }
     
-            // Mise à jour des options (ici couleurs)
-            $this->productOptionsModels->deleteOptionsByProductId($id);
             foreach ($selectedColors as $colorId) {
                 // Recherche de la couleur dans le tableau des couleurs disponibles
                 $color = array_filter($availableColors, function($c) use ($colorId) {
                     return $c['id'] == $colorId;
                 });
-    
+            
                 if (!empty($color)) {
                     $color = array_shift($color);
                     $this->productOptionsModels->saveProductOptions($id, 'couleur', $color['name']);
                 }
             }
+            
     
             // Mise à jour des options d'images
             foreach ($imageOptions as $imageId => $colorId) {
@@ -153,18 +153,18 @@ class AdminProductsControllers {
     
     public function deleteProduct($id) {
         // Récupérer les chemins des images associées au produit
-        $images = $this->productImagesModels->getImagesByProductId($id);
+        // $images = $this->productImagesModels->getImagesByProductId($id);
     
         // Supprimer les fichiers du système de fichiers
-        foreach ($images as $image) {
-            $filePath = $image['image_path'];
-            if (file_exists($filePath)) {
-                unlink($filePath); // Supprimer le fichier
-            }
-        }
+        // foreach ($images as $image) {
+        //     $filePath = $image['image_path'];
+        //     if (file_exists($filePath)) {
+        //         unlink($filePath); // Supprimer le fichier
+        //     }
+        // }
     
         // Supprimer les enregistrements des images dans la base de données
-        $this->productImagesModels->deleteImagesByProductId($id);
+        // $this->productImagesModels->deleteImagesByProductId($id);
     
         // Supprimer le produit lui-même
         $this->productsModels->deleteProduct($id);

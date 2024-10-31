@@ -13,7 +13,7 @@ class GammesModels {
     }
 
     public function getGammes() {
-        $queryGammes = "SELECT * FROM products_range";
+        $queryGammes = "SELECT * FROM products_range WHERE archived = 0";
         $gammes = $this->db->prepare($queryGammes);
         $gammes->execute();
         return $gammes->fetchAll(\PDO::FETCH_ASSOC);

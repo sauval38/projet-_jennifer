@@ -20,6 +20,7 @@ class GammesAdminViews {
                         <th>Nom</th>
                         <th>Description</th>
                         <th>Image</th>
+                        <th>Archivé</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -36,9 +37,10 @@ class GammesAdminViews {
                                         Pas d'image
                                     <?php endif; ?>
                                 </td>
+                                <td><?php echo $gamme['archived'] == 1 ? 'oui' : 'non'; ?></td>
                                 <td>
                                     <a href="admin/gammes/edit/<?php echo $gamme['id']; ?>" class="btn btn-secondary">Modifier</a>
-                                    <a href="admin/gammes/delete/<?php echo $gamme['id']; ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette gamme ?');">Supprimer</a>
+                                    <a href="admin/gammes/delete/<?php echo $gamme['id']; ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir archiver cette gamme ?');">Archiver</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

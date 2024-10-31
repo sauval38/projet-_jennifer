@@ -40,6 +40,7 @@ class AdminProductSearchViews {
                         <th>Hauteur</th>
                         <th>Poids</th>
                         <th>Gamme</th>
+                        <th>Archivé</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -54,9 +55,10 @@ class AdminProductSearchViews {
                                 <td><?php echo htmlspecialchars($product['height']); ?></td>
                                 <td><?php echo htmlspecialchars($product['weight']); ?></td>
                                 <td><?php echo htmlspecialchars($product['gamme_name']); ?></td>
+                                <td><?php echo $product['archived'] == 1 ? 'oui' : 'non'; ?></td>
                                 <td>
                                     <a href="admin/products/edit/<?php echo $product['id']; ?>" class="btn btn-secondary">Modifier</a>
-                                    <a href="admin/products/delete/<?php echo $product['id']; ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette gamme ?');">Supprimer</a>
+                                    <a href="admin/products/delete/<?php echo $product['id']; ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir archiver ce produit ?');">Archiver</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

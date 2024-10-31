@@ -32,16 +32,35 @@ class AdminProductOptionsModels {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     
+    public function optionExists($product_id, $option_name, $option_value) {
+        $query = "SELECT COUNT(*) FROM product_option 
+                  WHERE product_id = :product_id AND option_name = :option_name AND option_value = :option_value";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':product_id', $product_id, \PDO::PARAM_INT);
+        $stmt->bindParam(':option_name', $option_name);
+        $stmt->bindParam(':option_value', $option_value);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }    
 
     public function saveProductOptions($product_id, $option_name, $option_value) {
-        $query = "INSERT INTO product_option (product_id, option_name, option_value) 
-                  VALUES (:product_id, :option_name, :option_value)";
+        if ($this->optionExists($product_id, $option_name, $option_value)) {
+            // Si l'option existe, on fait une mise à jour
+            $query = "UPDATE product_option SET option_value = :option_value 
+                      WHERE product_id = :product_id AND option_name = :option_name";
+        } else {
+            // Sinon, on fait une insertion
+            $query = "INSERT INTO product_option (product_id, option_name, option_value) 
+                      VALUES (:product_id, :option_name, :option_value)";
+        }
+    
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':product_id', $product_id);
         $stmt->bindParam(':option_name', $option_name);
         $stmt->bindParam(':option_value', $option_value);
         $stmt->execute();
     }
+    
 
     public function getOptionsByProductId($product_id) {
         $query = "SELECT * FROM product_option WHERE product_id = :product_id";

@@ -45,6 +45,10 @@ class AdminProductFormViews {
                 <label for="weight">Poids (g):</label>
                 <input type="number" id="weight" name="weight" value="<?php echo htmlspecialchars($product['weight']); ?>">
                 <br>
+
+                <label for="archived">Archivé:</label>
+                <input type="checkbox" id="archived" name="archived" value="1" <?php echo $product['archived'] ? 'checked' : 0; ?>>
+                <br>
     
                 <label for="colors">Couleurs Disponibles:</label>
                 <select id="colors" name="colors[]" multiple>

@@ -59,10 +59,10 @@ class AdminProductsModels {
     }
     
 
-    public function updateProduct($id, $product_range_id, $name, $description, $price, $stock, $height, $weight) {
+    public function updateProduct($id, $product_range_id, $name, $description, $price, $stock, $height, $weight, $archived) {
         $query = "UPDATE products 
                   SET product_range_id = :product_range_id, name = :name, description = :description, 
-                      price = :price, stock = :stock, height = :height, weight = :weight 
+                      price = :price, stock = :stock, height = :height, weight = :weight, archived = :archived 
                   WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
@@ -73,11 +73,12 @@ class AdminProductsModels {
         $stmt->bindParam(':stock', $stock);
         $stmt->bindParam(':height', $height);
         $stmt->bindParam(':weight', $weight);
+        $stmt->bindParam(':archived', $archived, \PDO::PARAM_INT);
         return $stmt->execute();
     }
 
     public function deleteProduct($id) {
-        $query = "DELETE FROM products WHERE id = :id";
+        $query = "UPDATE products SET archived = 1 WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         return $stmt->execute();
